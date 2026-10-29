@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05080d">
+<title>Hypersonic Alliance | Vanguard Aviation Systems</title>
+
+<style>
+:root {
+  --oro: #d9b66d;
+  --oro-claro: #ffe8a6;
+  --fondo: #05080d;
+  --plata: #d4d8df;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--fondo);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portada {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(2,5,10,.35), rgba(2,5,10,.72) 45%, #05080d 100%),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=90")
+    center center / cover no-repeat;
+}
+
+.portada::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.68), transparent 100%);
+  pointer-events: none;
+}
+
+.contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 1250px;
+  margin: auto;
+  padding: 35px 24px 50px;
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid rgba(217,182,109,.5);
+  padding-bottom: 18px;
+}
+
+.marca {
+  color: var(--oro-claro);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.estado {
+  color: #e2c986;
+  font-size: 10px;
+  letter-spacing: 2px;
+  border: 1px solid rgba(217,182,109,.55);
+  padding: 9px 12px;
+}
+
+h1 {
+  margin-top: 65px;
+  max-width: 950px;
+  color: var(--oro-claro);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(35px, 7vw, 76px);
+  line-height: 1.04;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 25px #000;
+}
+
+.subtitulo {
+  margin-top: 17px;
+  color: #e3e5e8;
+  font-size: clamp(14px, 2vw, 20px);
+  letter-spacing: 4px;
+  line-height: 1.6;
+}
+
+.linea-oro {
+  width: 110px;
+  height: 3px;
+  background: var(--oro);
+  margin: 28px 0;
+}
+
+.etiqueta {
+  color: var(--oro-claro);
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 13px;
+}
+
+.descripcion {
+  color: #e0e2e7;
+  max-width: 760px;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+  max-width: 850px;
+}
+
+.dato {
+  background: rgba(3,7,13,.77);
+  border: 1px solid rgba(217,182,109,.3);
+  padding: 17px;
+  backdrop-filter: blur(5px);
+}
+
+.dato strong {
+  display: block;
+  color: var(--oro);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.dato span {
+  display: block;
+  color: #f0f1f4;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.confidencial {
+  margin-top: 30px;
+  color: #f0d59a;
+  letter-spacing: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.seccion-avion {
+  padding-top: 55px;
+}
+
+.avion-marco {
+  position: relative;
+  margin-top: 22px;
+  border: 1px solid rgba(217,182,109,.45);
+  background:
+    radial-gradient(ellipse at center, #202a37 0%, #0b1018 55%, #030509 100%);
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avion-marco::before,
+.avion-marco::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 1px;
+  background: rgba(217,182,109,.2);
+  transform: rotate(-15deg);
+}
+
+.avion-marco::after {
+  transform: rotate(15deg);
+}
+
+.avion-dibujo {
+  position: relative;
+  z-index: 1;
+  width: min(85%, 650px);
+  filter: drop-shadow(0 12px 18px rgba(0,0,0,.9));
+}
+
+.nombre-avion {
+  color: var(--oro-claro);
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 7vw, 65px);
+  letter-spacing: 8px;
+  margin-top: 25px;
+}
+
+.frase-avion {
+  color: #d7dce4;
+  text-align: center;
+  margin: 12px 0 25px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.boton {
+  display: inline-block;
+  text-align: center;
+  padding: 16px 25px;
+  background: linear-gradient(135deg, #f2d997, #b38a3e);
+  color: #101010;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 12px;
+  border: 1px solid #f9e7b4;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.boton:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.centrado {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.catalogo {
+  padding: 75px 24px;
+  background:
+    radial-gradient(ellipse at top, #17202d, #05080d 65%);
+  border-top: 1px solid rgba(217,182,109,.35);
+}
+
+.catalogo-interior {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.titulo-seccion {
+  color: var(--oro-claro);
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 5vw, 48px);
+  margin-bottom: 15px;
+}
+
+.texto-seccion {
+  color: var(--plata);
+  line-height: 1.8;
+  max-width: 750px;
+  font-size: 15px;
+}
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.tarjeta {
+  padding: 25px;
+  background: rgba(17,24,35,.85);
+  border: 1px solid rgba(217,182,109,.35);
+  min-height: 170px;
+}
+
+.tarjeta h3 {
+  color: var(--oro);
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin-bottom: 13px;
+}
+
+.tarjeta p {
+  color: #d0d5df;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.nota {
+  margin-top: 30px;
+  padding: 18px;
+  border-left: 3px solid var(--oro);
+  background: rgba(255,255,255,.04);
+  color: #c8cdd6;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+footer {
+  padding: 25px 15px;
+  text-align: center;
+  color: #999eaa;
+  border-top: 1px solid #252a33;
+  font-size: 11px;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .contenido {
+    padding: 22px 16px 35px;
+  }
+
+  .cabecera {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  h1 {
+    margin-top: 42px;
+  }
+
+  .subtitulo {
+    letter-spacing: 2px;
+  }
+
+  .datos {
+    grid-template-columns: 1fr;
+  }
+
+  .avion-marco {
+    min-height: 190px;
+  }
+
+  .confidencial {
+    letter-spacing: 3px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="portada" id="inicio">
+  <div class="contenido">
+
+    <div class="cabecera">
+      <div class="marca">HAVAS · AVIATION SYSTEMS</div>
+      <div class="estado">PROYECTO CONCEPTUAL · 2026</div>
+    </div>
+
+    <h1>
+      HYPERSONIC<br>
+      ALLIANCE
+    </h1>
+
+    <div class="subtitulo">
+      VANGUARD AVIATION SYSTEMS
+    </div>
+
+    <div class="linea-oro"></div>
+
+    <div class="etiqueta">VISIÓN · INGENIERÍA · INNOVACIÓN</div>
+
+    <p class="descripcion">
+      Una visión de la aviación avanzada, las tecnologías
+      hipersónicas y los sistemas aeroespaciales del futuro.
+      Descubre nuestra colección conceptual de aeronaves
+      y proyectos de exploración tecnológica.
+    </p>
+
+    <div class="datos">
+
+      <div class="dato">
+        <strong>BASE OPERATIVA CONCEPTUAL</strong>
+        <span>Sierra de Gádor, Almería — España</span>
+      </div>
+
+      <div class="dato">
+        <strong>UBICACIÓN DE REFERENCIA</strong>
+        <span>Comarca del Poniente Almeriense</span>
+      </div>
+
+      <div class="dato">
+        <strong>ALTITUD INDICADA EN EL CONCEPTO</strong>
+        <span>1.860 metros sobre el nivel del mar</span>
+      </div>
+
+      <div class="dato">
+        <strong>SUPERFICIE INDICADA EN EL CONCEPTO</strong>
+        <span>4,2 km² — instalaciones mayormente subterráneas</span>
+      </div>
+
+      <div class="dato">
+        <strong>PISTA DE PRUEBAS PROPUESTA</strong>
+        <span>3.800 metros — diseño conceptual</span>
+      </div>
+
+      <div class="dato">
+        <strong>ACCESO</strong>
+        <span>Representación de una instalación de acceso restringido</span>
+      </div>
+
+    </div>
+
+    <div class="confidencial">
+      MÁXIMA CONFIDENCIALIDAD
+    </div>
+
+    <section class="seccion-avion">
+      <div class="etiqueta">AERONAVE PRINCIPAL · PROYECTO CONCEPTUAL</div>
+
+      <div class="avion-marco">
+
+        <!-- Ilustración vectorial original de una aeronave conceptual -->
+        <svg class="avion-dibujo"
+             viewBox="0 0 800 300"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-label="Ilustración conceptual de una aeronave hipersónica">
+
+          <defs>
+            <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#aab5c3"/>
+              <stop offset="45%" stop-color="#343f4d"/>
+              <stop offset="100%" stop-color="#101720"/>
+            </linearGradient>
+            <linearGradient id="ala" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#788697"/>
+              <stop offset="100%" stop-color="#141c26"/>
+            </linearGradient>
+          </defs>
+
+          <g transform="translate(0 8)">
+            <!-- Ala principal -->
+            <path d="M395 132 L660 210 L735 222 L468 148 Z"
+                  fill="url(#ala)" stroke="#a3afbd" stroke-width="1.5"/>
+
+            <path d="M395 132 L145 213 L65 225 L325 148 Z"
+                  fill="url(#ala)" stroke="#a3afbd" stroke-width="1.5"/>
+
+            <!-- Fuselaje -->
+            <path d="M90 151
+                     L298 125
+                     L386 96
+                     L540 112
+                     L700 144
+                     L540 150
+                     L386 166
+                     L298 158 Z"
+                  fill="url(#metal)" stroke="#c0c9d3" stroke-width="2"/>
+
+            <!-- Cabina -->
+            <path d="M520 116 L585 130 L542 134 L493 125 Z"
+                  fill="#101b29" stroke="#b9c6d5" stroke-width="1.2"/>
+
+            <!-- Detalles de superficie -->
+            <path d="M190 146 L385 116 L490 119"
+                  fill="none" stroke="#e0c17d" stroke-width="1.5" opacity=".8"/>
+
+            <path d="M295 157 L389 146 L530 146"
+                  fill="none" stroke="#7d8998" stroke-width="1.2"/>
+
+            <!-- Estabilizadores -->
+            <path d="M330 130 L300 82 L345 119 Z"
+                  fill="#667587" stroke="#aab5c3" stroke-width="1.5"/>
+
+            <path d="M330 153 L300 197 L350 162 Z"
+                  fill="#394757" stroke="#8794a4" stroke-width="1.5"/>
+
+            <!-- Motores -->
+            <ellipse cx="170" cy="157" rx="18" ry="7" fill="#090c12"/>
+            <ellipse cx="170" cy="157" rx="8" ry="3" fill="#d9b66d"/>
+          </g>
+
+        </svg>
+      </div>
+
+      <div class="nombre-avion">ES74</div>
+
+      <p class="frase-avion">
+        «El cielo no tiene límites para quien no deja rastro».
+      </p>
+
+      <div class="centrado">
+        <a class="boton" href="#catalogo">
+          EXPLORAR CATÁLOGO 2026&nbsp; →
+        </a>
+      </div>
+    </section>
+
+  </div>
+</header>
+
+<section class="catalogo" id="catalogo">
+  <div class="catalogo-interior">
+
+    <div class="etiqueta">HYPERSONIC ALLIANCE · ARCHIVO 2026</div>
+
+    <h2 class="titulo-seccion">Catálogo de aeronaves</h2>
+
+    <p class="texto-seccion">
+      Explora las aeronaves y líneas de investigación
+      que forman parte de este universo conceptual.
+      Esta sección podrá ampliarse con nuevas fichas,
+      imágenes, características y documentación.
+    </p>
+
+    <div class="tarjetas">
+
+      <article class="tarjeta">
+        <h3>ES74</h3>
+        <p>
+          Proyecto principal de aeronave hipersónica.
+          Ficha conceptual en desarrollo.
+        </p>
+      </article>
+
+      <article class="tarjeta">
+        <h3>Serie Vanguard</h3>
+        <p>
+          Espacio reservado para futuros modelos,
+          ilustraciones y especificaciones conceptuales.
+        </p>
+      </article>
+
+      <article class="tarjeta">
+        <h3>Investigación aeroespacial</h3>
+        <p>
+          Futuras publicaciones sobre aerodinámica,
+          materiales y tecnologías de vuelo avanzado.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="nota">
+      <strong>NOTA:</strong> Esta web es una presentación conceptual.
+      Las instalaciones, cifras de rendimiento, capacidades
+      de invisibilidad al radar y características de las aeronaves
+      no están verificadas como datos reales. La ilustración ES74
+      es una representación artística, no una fotografía técnica.
+    </div>
+
+    <div class="centrado">
+      <a class="boton" href="#inicio">↑ VOLVER A PORTADA</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  HYPERSONIC ALLIANCE · VANGUARD AVIATION SYSTEMS<br>
+  ARCHIVO CONCEPTUAL · 2026
+</footer>
+
+</body>
+</html>
