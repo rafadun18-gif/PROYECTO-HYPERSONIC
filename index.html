@@ -2,115 +2,97 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
 
-<title>HYPERSONIC ALLIANCE</title>
+<title>HYPERSONIC ALLIANCE · ES74</title>
 
-<!-- PRE CARGA DE LA PORTADA -->
 <link rel="preload" as="image" href="portada-es74.png">
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
+    margin: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    background: #050505;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
-    background: #000;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .portada {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-
-    background-color: #000;
+    position: fixed;
+    inset: 0;
     background-image: url("portada-es74.png");
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
-/* BOTONES */
+.musica {
+    position: fixed;
+    top: max(18px, env(safe-area-inset-top));
+    right: 18px;
+    z-index: 10;
+}
 
-.boton {
-    position: absolute;
-    bottom: max(25px, env(safe-area-inset-bottom));
-
+.boton-musica,
+.navegacion a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 155px;
-    padding: 15px 22px;
-
-    color: #ffe8a6;
-    background: rgba(0,0,0,0.85);
-
-    border: 1px solid #d9b66d;
-    border-radius: 5px;
-
+    background: rgba(0,0,0,0.82);
+    color: #fff;
+    border: 2px solid #d6ad55;
+    border-radius: 8px;
+    padding: 13px 17px;
+    text-decoration: none;
     font-size: 13px;
     font-weight: bold;
-    letter-spacing: 2px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.investigacion {
-    left: max(20px, env(safe-area-inset-left));
-}
-
-.catalogo {
-    right: max(20px, env(safe-area-inset-right));
-}
-
-/* MÚSICA */
-
-.musica {
-    position: absolute;
-    top: max(20px, env(safe-area-inset-top));
-    right: 20px;
-
-    padding: 11px 16px;
-
-    color: #ffe8a6;
-    background: rgba(0,0,0,0.85);
-
-    border: 1px solid #d9b66d;
-    border-radius: 5px;
-
-    font-size: 12px;
-    font-weight: bold;
+    letter-spacing: 1px;
     cursor: pointer;
+    min-height: 46px;
 }
 
-@media (max-width: 480px) {
-    .boton {
-        min-width: 135px;
-        padding: 13px 12px;
+.boton-musica:active,
+.navegacion a:active {
+    background: #d6ad55;
+    color: #000;
+}
+
+.navegacion {
+    position: fixed;
+    bottom: max(22px, env(safe-area-inset-bottom));
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 18px;
+    gap: 12px;
+}
+
+.navegacion a {
+    text-align: center;
+    min-width: 145px;
+}
+
+@media (max-width: 380px) {
+    .navegacion a {
+        min-width: 0;
+        flex: 1;
+        padding: 12px 8px;
         font-size: 11px;
-        letter-spacing: 1px;
-        bottom: max(20px, env(safe-area-inset-bottom));
-    }
-
-    .investigacion {
-        left: 12px;
-    }
-
-    .catalogo {
-        right: 12px;
-    }
-
-    .musica {
-        right: 12px;
-        top: max(12px, env(safe-area-inset-top));
     }
 }
 </style>
@@ -118,74 +100,80 @@ html, body {
 
 <body>
 
-<main class="portada">
+<div class="portada"></div>
 
-    <button class="musica" id="controlMusica">
+<div class="musica">
+    <button id="botonMusica" class="boton-musica" type="button">
         ▶ ACTIVAR MÚSICA
     </button>
+</div>
 
-    <audio
-        id="audioPortada"
-        src="portada.mp3"
-        preload="auto"
-        loop
-        playsinline>
-    </audio>
+<audio
+    id="audioPortada"
+    src="portada.mp3"
+    preload="auto"
+    loop
+    playsinline
+    webkit-playsinline>
+</audio>
 
-    <a class="boton investigacion" href="investigacion.html">
-        INVESTIGACIÓN →
-    </a>
-
-    <a class="boton catalogo" href="catalogo.html">
-        CATÁLOGO →
-    </a>
-
-</main>
+<nav class="navegacion">
+    <a href="investigacion.html">INVESTIGACIÓN →</a>
+    <a href="catalogo.html">CATÁLOGO →</a>
+</nav>
 
 <script>
 const audio = document.getElementById("audioPortada");
-const boton = document.getElementById("controlMusica");
+const boton = document.getElementById("botonMusica");
 
-/* INTENTO DE REPRODUCCIÓN AUTOMÁTICA */
+let musicaActiva = false;
 
-async function iniciarMusica() {
-    try {
-        await audio.play();
+function actualizarBoton() {
+    if (!audio.paused) {
         boton.textContent = "⏸ PAUSAR MÚSICA";
-    } catch (error) {
+        musicaActiva = true;
+    } else {
         boton.textContent = "▶ ACTIVAR MÚSICA";
+        musicaActiva = false;
     }
 }
 
-/* ACTIVACIÓN MANUAL SI EL NAVEGADOR LA BLOQUEA */
+async function activarMusica() {
+    try {
+        audio.volume = 1;
+        await audio.play();
+        actualizarBoton();
+    } catch (error) {
+        actualizarBoton();
+    }
+}
 
-boton.addEventListener("click", async () => {
+boton.addEventListener("click", async function() {
     if (audio.paused) {
-        try {
-            await audio.play();
-            boton.textContent = "⏸ PAUSAR MÚSICA";
-        } catch (error) {
-            boton.textContent = "⚠ REINTENTAR";
-        }
+        await activarMusica();
     } else {
         audio.pause();
-        boton.textContent = "▶ ACTIVAR MÚSICA";
+        actualizarBoton();
     }
 });
 
-/* ESTADO DEL BOTÓN */
-
-audio.addEventListener("play", () => {
-    boton.textContent = "⏸ PAUSAR MÚSICA";
+/* Intento de reproducción automática */
+window.addEventListener("load", function() {
+    activarMusica();
 });
 
-audio.addEventListener("pause", () => {
-    boton.textContent = "▶ ACTIVAR MÚSICA";
+/* Reintento tras la primera interacción del visitante */
+["touchstart", "click", "keydown"].forEach(function(evento) {
+    document.addEventListener(evento, function() {
+        if (audio.paused && !musicaActiva) {
+            activarMusica();
+        }
+    }, { once: true, passive: true });
 });
 
-/* INICIAR AL CARGAR */
-
-window.addEventListener("load", iniciarMusica);
+audio.addEventListener("play", actualizarBoton);
+audio.addEventListener("pause", actualizarBoton);
+audio.addEventListener("ended", actualizarBoton);
 </script>
 
 </body>
