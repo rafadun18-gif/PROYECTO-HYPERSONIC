@@ -6,6 +6,9 @@
 
 <title>HYPERSONIC ALLIANCE</title>
 
+<!-- PRE CARGA DE LA PORTADA -->
+<link rel="preload" as="image" href="portada-es74.png">
+
 <style>
 * {
     box-sizing: border-box;
@@ -26,39 +29,38 @@ html, body {
     width: 100%;
     height: 100%;
     min-height: 100vh;
+
+    background-color: #000;
     background-image: url("portada-es74.png");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-/* BOTONES PRINCIPALES */
+/* BOTONES */
 
 .boton {
     position: absolute;
     bottom: max(25px, env(safe-area-inset-bottom));
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-width: 155px;
     padding: 15px 22px;
+
     color: #ffe8a6;
-    background: rgba(0, 0, 0, 0.82);
+    background: rgba(0,0,0,0.85);
+
     border: 1px solid #d9b66d;
     border-radius: 5px;
+
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 2px;
     text-decoration: none;
     text-align: center;
-    box-shadow: 0 0 15px rgba(217,182,109,0.25);
-    transition: 0.3s;
-}
-
-.boton:hover {
-    background: #d9b66d;
-    color: #000;
-    box-shadow: 0 0 22px rgba(217,182,109,0.7);
 }
 
 .investigacion {
@@ -69,29 +71,25 @@ html, body {
     right: max(20px, env(safe-area-inset-right));
 }
 
-/* CONTROL DE MÚSICA */
+/* MÚSICA */
 
 .musica {
     position: absolute;
     top: max(20px, env(safe-area-inset-top));
     right: 20px;
+
     padding: 11px 16px;
+
     color: #ffe8a6;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
+
     border: 1px solid #d9b66d;
     border-radius: 5px;
+
     font-size: 12px;
     font-weight: bold;
-    letter-spacing: 1px;
     cursor: pointer;
 }
-
-.musica:active {
-    background: #d9b66d;
-    color: #000;
-}
-
-/* MÓVILES */
 
 @media (max-width: 480px) {
     .boton {
@@ -122,11 +120,17 @@ html, body {
 
 <main class="portada">
 
-    <button class="musica" id="controlMusica" type="button">
+    <button class="musica" id="controlMusica">
         ▶ ACTIVAR MÚSICA
     </button>
 
-    <audio id="audioPortada" src="portada.mp3" loop preload="auto"></audio>
+    <audio
+        id="audioPortada"
+        src="portada.mp3"
+        preload="auto"
+        loop
+        playsinline>
+    </audio>
 
     <a class="boton investigacion" href="investigacion.html">
         INVESTIGACIÓN →
@@ -140,32 +144,48 @@ html, body {
 
 <script>
 const audio = document.getElementById("audioPortada");
-const botonMusica = document.getElementById("controlMusica");
+const boton = document.getElementById("controlMusica");
 
-let reproduciendo = false;
+/* INTENTO DE REPRODUCCIÓN AUTOMÁTICA */
 
-botonMusica.addEventListener("click", async function() {
+async function iniciarMusica() {
+    try {
+        await audio.play();
+        boton.textContent = "⏸ PAUSAR MÚSICA";
+    } catch (error) {
+        boton.textContent = "▶ ACTIVAR MÚSICA";
+    }
+}
 
-    if (!reproduciendo) {
+/* ACTIVACIÓN MANUAL SI EL NAVEGADOR LA BLOQUEA */
+
+boton.addEventListener("click", async () => {
+    if (audio.paused) {
         try {
             await audio.play();
-            reproduciendo = true;
-            botonMusica.textContent = "⏸ PAUSAR MÚSICA";
+            boton.textContent = "⏸ PAUSAR MÚSICA";
         } catch (error) {
-            botonMusica.textContent = "⚠ VOLVER A INTENTAR";
+            boton.textContent = "⚠ REINTENTAR";
         }
     } else {
         audio.pause();
-        reproduciendo = false;
-        botonMusica.textContent = "▶ ACTIVAR MÚSICA";
+        boton.textContent = "▶ ACTIVAR MÚSICA";
     }
-
 });
 
-audio.addEventListener("ended", function() {
-    reproduciendo = false;
-    botonMusica.textContent = "▶ ACTIVAR MÚSICA";
+/* ESTADO DEL BOTÓN */
+
+audio.addEventListener("play", () => {
+    boton.textContent = "⏸ PAUSAR MÚSICA";
 });
+
+audio.addEventListener("pause", () => {
+    boton.textContent = "▶ ACTIVAR MÚSICA";
+});
+
+/* INICIAR AL CARGAR */
+
+window.addEventListener("load", iniciarMusica);
 </script>
 
 </body>
