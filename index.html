@@ -32,7 +32,7 @@ html, body {
     background-size: cover;
 }
 
-/* BOTONES */
+/* BOTONES PRINCIPALES */
 
 .boton {
     position: absolute;
@@ -42,19 +42,15 @@ html, body {
     justify-content: center;
     min-width: 155px;
     padding: 15px 22px;
-
     color: #ffe8a6;
     background: rgba(0, 0, 0, 0.82);
-
     border: 1px solid #d9b66d;
     border-radius: 5px;
-
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 2px;
     text-decoration: none;
     text-align: center;
-
     box-shadow: 0 0 15px rgba(217,182,109,0.25);
     transition: 0.3s;
 }
@@ -65,16 +61,34 @@ html, body {
     box-shadow: 0 0 22px rgba(217,182,109,0.7);
 }
 
-/* INVESTIGACIÓN: IZQUIERDA */
-
 .investigacion {
     left: max(20px, env(safe-area-inset-left));
 }
 
-/* CATÁLOGO: DERECHA */
-
 .catalogo {
     right: max(20px, env(safe-area-inset-right));
+}
+
+/* CONTROL DE MÚSICA */
+
+.musica {
+    position: absolute;
+    top: max(20px, env(safe-area-inset-top));
+    right: 20px;
+    padding: 11px 16px;
+    color: #ffe8a6;
+    background: rgba(0,0,0,0.8);
+    border: 1px solid #d9b66d;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.musica:active {
+    background: #d9b66d;
+    color: #000;
 }
 
 /* MÓVILES */
@@ -95,6 +109,11 @@ html, body {
     .catalogo {
         right: 12px;
     }
+
+    .musica {
+        right: 12px;
+        top: max(12px, env(safe-area-inset-top));
+    }
 }
 </style>
 </head>
@@ -102,6 +121,12 @@ html, body {
 <body>
 
 <main class="portada">
+
+    <button class="musica" id="controlMusica" type="button">
+        ▶ ACTIVAR MÚSICA
+    </button>
+
+    <audio id="audioPortada" src="portada.mp3" loop preload="auto"></audio>
 
     <a class="boton investigacion" href="investigacion.html">
         INVESTIGACIÓN →
@@ -112,6 +137,36 @@ html, body {
     </a>
 
 </main>
+
+<script>
+const audio = document.getElementById("audioPortada");
+const botonMusica = document.getElementById("controlMusica");
+
+let reproduciendo = false;
+
+botonMusica.addEventListener("click", async function() {
+
+    if (!reproduciendo) {
+        try {
+            await audio.play();
+            reproduciendo = true;
+            botonMusica.textContent = "⏸ PAUSAR MÚSICA";
+        } catch (error) {
+            botonMusica.textContent = "⚠ VOLVER A INTENTAR";
+        }
+    } else {
+        audio.pause();
+        reproduciendo = false;
+        botonMusica.textContent = "▶ ACTIVAR MÚSICA";
+    }
+
+});
+
+audio.addEventListener("ended", function() {
+    reproduciendo = false;
+    botonMusica.textContent = "▶ ACTIVAR MÚSICA";
+});
+</script>
 
 </body>
 </html>
