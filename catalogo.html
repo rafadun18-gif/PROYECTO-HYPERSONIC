@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050b12">
+<title>HYPERSONIC ALLIANCE | CATÁLOGO</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ min-height:100vh;
+ background:
+ radial-gradient(ellipse at top,#12334b 0%,#07121d 48%,#020509 100%);
+ color:white;
+ font-family:Arial,sans-serif;
+}
+
+header{
+ text-align:center;
+ padding:30px 15px 20px;
+ border-bottom:1px solid #36cfff66;
+}
+
+header h1{
+ color:#55dfff;
+ font-size:clamp(23px,5vw,36px);
+ letter-spacing:4px;
+ text-shadow:0 0 18px #00bfff;
+ margin:8px 0;
+}
+
+header p{
+ color:#a8c9d9;
+ letter-spacing:2px;
+ font-size:12px;
+}
+
+.contenedor{
+ width:min(100%,1000px);
+ margin:auto;
+ padding:25px 16px 110px;
+}
+
+.estado{
+ text-align:center;
+ color:#8caebe;
+ font-size:12px;
+ letter-spacing:2px;
+ margin:12px 0 25px;
+}
+
+.carpetas{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:22px;
+}
+
+.carpeta{
+ background:linear-gradient(145deg,#102c40,#07121d);
+ border:1px solid #31caff;
+ border-radius:15px;
+ padding:28px 15px;
+ text-align:center;
+ cursor:pointer;
+ box-shadow:0 0 17px #00bfff22;
+ transition:.25s;
+}
+
+.carpeta:active{
+ transform:scale(.97);
+}
+
+.carpeta:hover{
+ box-shadow:0 0 25px #00cfff77;
+}
+
+.icono{
+ font-size:65px;
+ filter:drop-shadow(0 0 12px #00cfff);
+}
+
+.carpeta h2{
+ color:#58dcff;
+ letter-spacing:2px;
+ font-size:22px;
+}
+
+.carpeta p{
+ color:#b6cbd6;
+ font-size:13px;
+}
+
+button{
+ background:#061a29;
+ border:1px solid #40d9ff;
+ color:white;
+ border-radius:7px;
+ padding:12px 18px;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+button:hover{
+ background:#0d4260;
+}
+
+#contenido{
+ display:none;
+}
+
+#contenido h2{
+ color:#54dcff;
+ letter-spacing:2px;
+}
+
+.volver{
+ margin-bottom:20px;
+}
+
+.galeria{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:15px;
+ margin-top:20px;
+}
+
+.elemento{
+ background:#0b1b29;
+ border:1px solid #277e9d;
+ border-radius:10px;
+ overflow:hidden;
+}
+
+.elemento img,
+.elemento video{
+ width:100%;
+ display:block;
+ aspect-ratio:16/10;
+ object-fit:cover;
+ background:#000;
+}
+
+.elemento p{
+ padding:10px;
+ margin:0;
+ color:#fff;
+ font-size:13px;
+ text-align:center;
+}
+
+.elemento button{
+ display:block;
+ margin:10px auto;
+}
+
+#visor{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:20;
+ background:#000f;
+ padding:20px;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+}
+
+#visor img,#visor video{
+ max-width:100%;
+ max-height:75vh;
+ border:1px solid #42dfff;
+ border-radius:8px;
+}
+
+#cerrar{
+ margin-top:18px;
+}
+
+footer{
+ position:fixed;
+ bottom:0;
+ width:100%;
+ padding:13px;
+ text-align:center;
+ background:#030a11ee;
+ border-top:1px solid #36cfff66;
+}
+
+footer a{
+ color:#65dcff;
+ text-decoration:none;
+ font-size:13px;
+ letter-spacing:2px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>HYPERSONIC ALLIANCE</h1>
+<p>VANGUARD AVIATION SYSTEMS</p>
+<p>ARCHIVO DIGITAL · CATÁLOGO DE AERONAVES</p>
+</header>
+
+<main class="contenedor">
+
+<div id="inicio">
+<div class="estado">SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO</div>
+
+<div class="carpetas">
+
+<div class="carpeta" onclick="abrir('ES74')">
+<div class="icono">📁</div>
+<h2>MOD.ES74</h2>
+<p>ARCHIVO TÉCNICO ES74</p>
+<button>ABRIR CARPETA →</button>
+</div>
+
+<div class="carpeta" onclick="abrir('ES274')">
+<div class="icono">📁</div>
+<h2>MOD.ES274</h2>
+<p>ARCHIVO TÉCNICO ES274</p>
+<button>ABRIR CARPETA →</button>
+</div>
+
+</div>
+</div>
+
+<section id="contenido">
+<button class="volver" onclick="volver()">← VOLVER A CARPETAS</button>
+<h2 id="titulo"></h2>
+<p id="descripcion">ARCHIVO FOTOGRÁFICO Y AUDIOVISUAL</p>
+<div class="galeria" id="galeria"></div>
+</section>
+
+</main>
+
+<div id="visor">
+<div id="multimedia"></div>
+<button id="cerrar" onclick="cerrarVisor()">✕ CERRAR</button>
+</div>
+
+<footer>
+<a href="index.html">← VOLVER A PORTADA</a>
+</footer>
+
+<script>
+
+/* ARCHIVOS DE CADA MODELO */
+
+const archivos = {
+
+ES74: [
+ {tipo:"video", nombre:"ES741.mp4", ruta:"MOD.ES74/ES741.mp4"},
+ {tipo:"imagen", nombre:"Fotografía ES74", ruta:"MOD.ES74/foto1.jpg"},
+ {tipo:"imagen", nombre:"Fotografía ES74 2", ruta:"MOD.ES74/foto2.jpg"}
+],
+
+ES274: [
+ {tipo:"video", nombre:"ES274.mp4", ruta:"MOD.ES274/es274.mp4"},
+ {tipo:"imagen", nombre:"Fotografía ES274", ruta:"MOD.ES274/foto1.jpg"},
+ {tipo:"imagen", nombre:"Fotografía ES274 2", ruta:"MOD.ES274/foto2.jpg"}
+]
+
+};
+
+function abrir(modelo){
+
+ document.getElementById("inicio").style.display="none";
+ document.getElementById("contenido").style.display="block";
+
+ document.getElementById("titulo").textContent="MOD."+modelo;
+
+ const galeria=document.getElementById("galeria");
+ galeria.innerHTML="";
+
+ archivos[modelo].forEach(archivo=>{
+
+ const tarjeta=document.createElement("div");
+ tarjeta.className="elemento";
+
+ if(archivo.tipo==="imagen"){
+
+ tarjeta.innerHTML=`
+ <img src="${archivo.ruta}" alt="${archivo.nombre}"
+ onerror="this.parentElement.style.display='none'">
+ <p>${archivo.nombre}</p>
+ <button onclick="ver('${archivo.ruta}','imagen')">VER FOTOGRAFÍA</button>
+ `;
+
+ }else{
+
+ tarjeta.innerHTML=`
+ <video controls playsinline preload="metadata">
+ <source src="${archivo.ruta}" type="video/mp4">
+ </video>
+ <p>${archivo.nombre}</p>
+ <button onclick="ver('${archivo.ruta}','video')">REPRODUCIR VÍDEO</button>
+ `;
+
+ }
+
+ galeria.appendChild(tarjeta);
+
+ });
+
+}
+
+function volver(){
+ document.getElementById("contenido").style.display="none";
+ document.getElementById("inicio").style.display="block";
+}
+
+function ver(ruta,tipo){
+
+ const visor=document.getElementById("visor");
+ const multimedia=document.getElementById("multimedia");
+
+ multimedia.innerHTML="";
+
+ if(tipo==="imagen"){
+ const img=document.createElement("img");
+ img.src=ruta;
+ multimedia.appendChild(img);
+ }else{
+ const video=document.createElement("video");
+ video.src=ruta;
+ video.controls=true;
+ video.autoplay=true;
+ video.playsInline=true;
+ multimedia.appendChild(video);
+ }
+
+ visor.style.display="flex";
+}
+
+function cerrarVisor(){
+ const visor=document.getElementById("visor");
+ const multimedia=document.getElementById("multimedia");
+
+ multimedia.querySelectorAll("video").forEach(v=>v.pause());
+ multimedia.innerHTML="";
+ visor.style.display="none";
+}
+
+</script>
+
+</body>
+</html>
