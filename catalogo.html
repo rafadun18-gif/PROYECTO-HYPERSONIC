@@ -13,15 +13,14 @@
 body{
  margin:0;
  min-height:100vh;
- background:
- radial-gradient(ellipse at top,#12334b 0%,#07121d 48%,#020509 100%);
+ background:radial-gradient(ellipse at top,#12334b,#07121d 55%,#020509);
  color:white;
  font-family:Arial,sans-serif;
 }
 
 header{
  text-align:center;
- padding:30px 15px 20px;
+ padding:30px 15px;
  border-bottom:1px solid #36cfff66;
 }
 
@@ -30,7 +29,6 @@ header h1{
  font-size:clamp(23px,5vw,36px);
  letter-spacing:4px;
  text-shadow:0 0 18px #00bfff;
- margin:8px 0;
 }
 
 header p{
@@ -42,7 +40,7 @@ header p{
 .contenedor{
  width:min(100%,1000px);
  margin:auto;
- padding:25px 16px 110px;
+ padding:25px 16px 100px;
 }
 
 .estado{
@@ -50,7 +48,7 @@ header p{
  color:#8caebe;
  font-size:12px;
  letter-spacing:2px;
- margin:12px 0 25px;
+ margin:15px 0 25px;
 }
 
 .carpetas{
@@ -70,12 +68,9 @@ header p{
  transition:.25s;
 }
 
-.carpeta:active{
- transform:scale(.97);
-}
-
 .carpeta:hover{
  box-shadow:0 0 25px #00cfff77;
+ transform:translateY(-3px);
 }
 
 .icono{
@@ -86,7 +81,6 @@ header p{
 .carpeta h2{
  color:#58dcff;
  letter-spacing:2px;
- font-size:22px;
 }
 
 .carpeta p{
@@ -108,22 +102,16 @@ button:hover{
  background:#0d4260;
 }
 
-#contenido{
- display:none;
-}
+#contenido{display:none}
 
 #contenido h2{
  color:#54dcff;
  letter-spacing:2px;
 }
 
-.volver{
- margin-bottom:20px;
-}
-
 .galeria{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
  gap:15px;
  margin-top:20px;
 }
@@ -140,21 +128,24 @@ button:hover{
  width:100%;
  display:block;
  aspect-ratio:16/10;
- object-fit:cover;
+ object-fit:contain;
  background:#000;
 }
 
 .elemento p{
  padding:10px;
  margin:0;
- color:#fff;
- font-size:13px;
  text-align:center;
+ font-size:13px;
 }
 
 .elemento button{
  display:block;
  margin:10px auto;
+}
+
+.error{
+ color:#ff8b8b!important;
 }
 
 #visor{
@@ -163,22 +154,26 @@ button:hover{
  inset:0;
  z-index:20;
  background:#000f;
- padding:20px;
+ padding:15px;
  align-items:center;
  justify-content:center;
  flex-direction:column;
 }
 
-#visor img,#visor video{
+#multimedia{
+ width:100%;
+ display:flex;
+ justify-content:center;
+}
+
+#visor img{
  max-width:100%;
  max-height:75vh;
  border:1px solid #42dfff;
  border-radius:8px;
 }
 
-#cerrar{
- margin-top:18px;
-}
+#cerrar{margin-top:18px}
 
 footer{
  position:fixed;
@@ -196,7 +191,6 @@ footer a{
  font-size:13px;
  letter-spacing:2px;
 }
-
 </style>
 </head>
 
@@ -211,7 +205,9 @@ footer a{
 <main class="contenedor">
 
 <div id="inicio">
-<div class="estado">SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO</div>
+<div class="estado">
+SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO
+</div>
 
 <div class="carpetas">
 
@@ -233,9 +229,9 @@ footer a{
 </div>
 
 <section id="contenido">
-<button class="volver" onclick="volver()">← VOLVER A CARPETAS</button>
+<button onclick="volver()">← VOLVER A CARPETAS</button>
 <h2 id="titulo"></h2>
-<p id="descripcion">ARCHIVO FOTOGRÁFICO Y AUDIOVISUAL</p>
+<p>ARCHIVO FOTOGRÁFICO Y AUDIOVISUAL</p>
 <div class="galeria" id="galeria"></div>
 </section>
 
@@ -254,27 +250,62 @@ footer a{
 
 /* ARCHIVOS DE CADA MODELO */
 
-const archivos = {
+const archivos={
 
-ES74: [
- {tipo:"video", nombre:"ES741.mp4", ruta:"MOD.ES74/ES741.mp4"},
- {tipo:"imagen", nombre:"Fotografía ES74", ruta:"MOD.ES74/foto1.jpg"},
- {tipo:"imagen", nombre:"Fotografía ES74 2", ruta:"MOD.ES74/foto2.jpg"}
-],
+ ES74:[
+  {
+   tipo:"video",
+   nombre:"ES741.mp4",
+   ruta:"MOD.ES74/ES741.mp4"
+  },
+  {
+   tipo:"imagen",
+   nombre:"Fotografía ES74",
+   ruta:"MOD.ES74/foto1.jpg"
+  },
+  {
+   tipo:"imagen",
+   nombre:"Fotografía ES74 2",
+   ruta:"MOD.ES74/foto2.jpg"
+  }
+ ],
 
-ES274: [
- {tipo:"video", nombre:"ES274.mp4", ruta:"MOD.ES274/es274.mp4"},
- {tipo:"imagen", nombre:"Fotografía ES274", ruta:"MOD.ES274/foto1.jpg"},
- {tipo:"imagen", nombre:"Fotografía ES274 2", ruta:"MOD.ES274/foto2.jpg"}
-]
+ ES274:[
+  {
+   tipo:"video",
+   nombre:"ES2741.mp4",
+   ruta:"MOD.ES274/ES2741.mp4"
+  },
+  {
+   tipo:"video",
+   nombre:"ES2742.mp4",
+   ruta:"MOD.ES274/ES2742.mp4"
+  },
+  {
+   tipo:"video",
+   nombre:"ES2743.mp4",
+   ruta:"MOD.ES274/ES2743.mp4"
+  },
+  {
+   tipo:"imagen",
+   nombre:"Fotografía ES274",
+   ruta:"MOD.ES274/foto1.jpg"
+  },
+  {
+   tipo:"imagen",
+   nombre:"Fotografía ES274 2",
+   ruta:"MOD.ES274/foto2.jpg"
+  }
+ ]
 
 };
+
+/* ABRIR CARPETAS */
 
 function abrir(modelo){
 
  document.getElementById("inicio").style.display="none";
  document.getElementById("contenido").style.display="block";
-
  document.getElementById("titulo").textContent="MOD."+modelo;
 
  const galeria=document.getElementById("galeria");
@@ -282,71 +313,99 @@ function abrir(modelo){
 
  archivos[modelo].forEach(archivo=>{
 
- const tarjeta=document.createElement("div");
- tarjeta.className="elemento";
+  const tarjeta=document.createElement("div");
+  tarjeta.className="elemento";
 
- if(archivo.tipo==="imagen"){
+  if(archivo.tipo==="imagen"){
 
- tarjeta.innerHTML=`
- <img src="${archivo.ruta}" alt="${archivo.nombre}"
- onerror="this.parentElement.style.display='none'">
- <p>${archivo.nombre}</p>
- <button onclick="ver('${archivo.ruta}','imagen')">VER FOTOGRAFÍA</button>
- `;
+   const img=document.createElement("img");
+   img.src=archivo.ruta;
+   img.alt=archivo.nombre;
 
- }else{
+   img.onerror=()=>tarjeta.remove();
 
- tarjeta.innerHTML=`
- <video controls playsinline preload="metadata">
- <source src="${archivo.ruta}" type="video/mp4">
- </video>
- <p>${archivo.nombre}</p>
- <button onclick="ver('${archivo.ruta}','video')">REPRODUCIR VÍDEO</button>
- `;
+   tarjeta.appendChild(img);
 
- }
+   const nombre=document.createElement("p");
+   nombre.textContent=archivo.nombre;
+   tarjeta.appendChild(nombre);
 
- galeria.appendChild(tarjeta);
+   const boton=document.createElement("button");
+   boton.textContent="VER FOTOGRAFÍA";
+   boton.onclick=()=>ver(archivo.ruta);
+
+   tarjeta.appendChild(boton);
+
+  }else{
+
+   const video=document.createElement("video");
+   video.controls=true;
+   video.playsInline=true;
+   video.preload="metadata";
+
+   const source=document.createElement("source");
+   source.src=archivo.ruta;
+   source.type="video/mp4";
+
+   video.appendChild(source);
+
+   const nombre=document.createElement("p");
+   nombre.textContent=archivo.nombre;
+
+   video.onerror=()=>{
+    nombre.textContent=archivo.nombre+" · ERROR AL CARGAR";
+    nombre.classList.add("error");
+   };
+
+   tarjeta.appendChild(video);
+   tarjeta.appendChild(nombre);
+
+  }
+
+  galeria.appendChild(tarjeta);
 
  });
 
 }
 
-function volver(){
- document.getElementById("contenido").style.display="none";
- document.getElementById("inicio").style.display="block";
-}
+/* VISOR DE FOTOGRAFÍAS */
 
-function ver(ruta,tipo){
+function ver(ruta){
 
  const visor=document.getElementById("visor");
  const multimedia=document.getElementById("multimedia");
 
  multimedia.innerHTML="";
 
- if(tipo==="imagen"){
  const img=document.createElement("img");
  img.src=ruta;
- multimedia.appendChild(img);
- }else{
- const video=document.createElement("video");
- video.src=ruta;
- video.controls=true;
- video.autoplay=true;
- video.playsInline=true;
- multimedia.appendChild(video);
- }
 
+ multimedia.appendChild(img);
  visor.style.display="flex";
+
 }
 
+/* VOLVER */
+
+function volver(){
+
+ cerrarVisor();
+
+ document.getElementById("contenido").style.display="none";
+ document.getElementById("inicio").style.display="block";
+
+}
+
+/* CERRAR VISOR */
+
 function cerrarVisor(){
+
  const visor=document.getElementById("visor");
  const multimedia=document.getElementById("multimedia");
 
- multimedia.querySelectorAll("video").forEach(v=>v.pause());
  multimedia.innerHTML="";
  visor.style.display="none";
+
 }
 
 </script>
