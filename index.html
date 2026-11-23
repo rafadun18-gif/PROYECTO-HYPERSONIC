@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,170 +6,186 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050505">
 
-<title>HYPERSONIC ALLIANCE · ES74</title>
-
-<link rel="preload" as="image" href="portada-es74.png">
+<title>Hypersonic Alliance | Vanguard Aviation Systems</title>
 
 <style>
 * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-    background: #050505;
-    font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050505;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    min-height: 100dvh;
-    overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
+
+/* PORTADA COMPLETA */
 
 .portada {
-    position: fixed;
-    inset: 0;
-    background-image: url("portada-es74.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #050505;
+  background-image: url("portada-es74.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
+
+/* BOTÓN DE MÚSICA */
 
 .musica {
-    position: fixed;
-    top: max(18px, env(safe-area-inset-top));
-    right: 18px;
-    z-index: 10;
+  position: fixed;
+  z-index: 20;
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
 }
 
-.boton-musica,
-.navegacion a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.82);
-    color: #fff;
-    border: 2px solid #d6ad55;
-    border-radius: 8px;
-    padding: 13px 17px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    cursor: pointer;
-    min-height: 46px;
+.boton-musica {
+  min-height: 44px;
+  padding: 11px 15px;
+  border: 2px solid #d6ad55;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
-.boton-musica:active,
-.navegacion a:active {
-    background: #d6ad55;
-    color: #000;
-}
+/* ACCESOS */
 
 .navegacion {
-    position: fixed;
-    bottom: max(22px, env(safe-area-inset-bottom));
-    left: 0;
-    right: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 18px;
-    gap: 12px;
+  position: fixed;
+  z-index: 20;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  left: 12px;
+  right: 12px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 .navegacion a {
-    text-align: center;
-    min-width: 145px;
+  min-width: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 5px;
+  border: 2px solid #d6ad55;
+  border-radius: 8px;
+
+  background: rgba(0,0,0,0.92);
+  color: #ffffff;
+
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
+.navegacion a:active,
+.boton-musica:active {
+  background: #d6ad55;
+  color: #000000;
+}
+
+/* IPHONE Y PANTALLAS PEQUEÑAS */
+
 @media (max-width: 380px) {
-    .navegacion a {
-        min-width: 0;
-        flex: 1;
-        padding: 12px 8px;
-        font-size: 11px;
-    }
+  .navegacion {
+    left: 8px;
+    right: 8px;
+    gap: 7px;
+  }
+
+  .navegacion a {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
+  .boton-musica {
+    font-size: 10px;
+    padding: 10px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="portada"></div>
+<!-- IMAGEN PRINCIPAL -->
+<main class="portada" aria-label="Portada ES74"></main>
 
+<!-- REPRODUCTOR -->
 <div class="musica">
-    <button id="botonMusica" class="boton-musica" type="button">
-        ▶ ACTIVAR MÚSICA
-    </button>
+  <button
+    id="botonMusica"
+    class="boton-musica"
+    type="button">
+    ▶ ACTIVAR MÚSICA
+  </button>
 </div>
 
 <audio
-    id="audioPortada"
-    src="portada.mp3"
-    preload="auto"
-    loop
-    playsinline
-    webkit-playsinline>
+  id="audioPortada"
+  src="portada.mp3"
+  preload="auto"
+  loop
+  playsinline>
 </audio>
 
+<!-- ACCESOS PRINCIPALES -->
 <nav class="navegacion">
-    <a href="investigacion.html">INVESTIGACIÓN →</a>
-    <a href="catalogo.html">CATÁLOGO →</a>
+
+  <a href="investigacion.html">
+    INVESTIGACIÓN →
+  </a>
+
+  <a href="catalogo.html">
+    CATÁLOGO →
+  </a>
+
 </nav>
 
 <script>
 const audio = document.getElementById("audioPortada");
 const boton = document.getElementById("botonMusica");
 
-let musicaActiva = false;
-
 function actualizarBoton() {
-    if (!audio.paused) {
-        boton.textContent = "⏸ PAUSAR MÚSICA";
-        musicaActiva = true;
-    } else {
-        boton.textContent = "▶ ACTIVAR MÚSICA";
-        musicaActiva = false;
-    }
+  boton.textContent = audio.paused
+    ? "▶ ACTIVAR MÚSICA"
+    : "⏸ PAUSAR MÚSICA";
 }
 
-async function activarMusica() {
+boton.addEventListener("click", async () => {
+  if (audio.paused) {
     try {
-        audio.volume = 1;
-        await audio.play();
-        actualizarBoton();
+      await audio.play();
     } catch (error) {
-        actualizarBoton();
+      actualizarBoton();
     }
-}
+  } else {
+    audio.pause();
+  }
 
-boton.addEventListener("click", async function() {
-    if (audio.paused) {
-        await activarMusica();
-    } else {
-        audio.pause();
-        actualizarBoton();
-    }
-});
-
-/* Intento de reproducción automática */
-window.addEventListener("load", function() {
-    activarMusica();
-});
-
-/* Reintento tras la primera interacción del visitante */
-["touchstart", "click", "keydown"].forEach(function(evento) {
-    document.addEventListener(evento, function() {
-        if (audio.paused && !musicaActiva) {
-            activarMusica();
-        }
-    }, { once: true, passive: true });
+  actualizarBoton();
 });
 
 audio.addEventListener("play", actualizarBoton);
