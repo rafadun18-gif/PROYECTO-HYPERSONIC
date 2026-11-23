@@ -9,188 +9,64 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
  margin:0;
  min-height:100vh;
  background:radial-gradient(ellipse at top,#12334b,#07121d 55%,#020509);
- color:white;
- font-family:Arial,sans-serif;
+ color:white;font-family:Arial,sans-serif;
 }
-
 header{
- text-align:center;
- padding:30px 15px;
+ text-align:center;padding:25px 12px;
  border-bottom:1px solid #36cfff66;
 }
-
 header h1{
- color:#55dfff;
- font-size:clamp(23px,5vw,36px);
- letter-spacing:4px;
- text-shadow:0 0 18px #00bfff;
+ color:#55dfff;font-size:clamp(22px,5vw,36px);
+ letter-spacing:3px;text-shadow:0 0 18px #00bfff;
 }
-
-header p{
- color:#a8c9d9;
- letter-spacing:2px;
- font-size:12px;
+header p{color:#a8c9d9;letter-spacing:2px;font-size:12px}
+.contenedor{width:min(100%,1000px);margin:auto;padding:25px 15px 90px}
+.estado{text-align:center;color:#8caebe;font-size:12px;margin:15px 0 25px}
+.carpetas,.galeria{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;
 }
-
-.contenedor{
- width:min(100%,1000px);
- margin:auto;
- padding:25px 16px 100px;
-}
-
-.estado{
- text-align:center;
- color:#8caebe;
- font-size:12px;
- letter-spacing:2px;
- margin:15px 0 25px;
-}
-
-.carpetas{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:22px;
-}
-
 .carpeta{
  background:linear-gradient(145deg,#102c40,#07121d);
- border:1px solid #31caff;
- border-radius:15px;
- padding:28px 15px;
- text-align:center;
- cursor:pointer;
- box-shadow:0 0 17px #00bfff22;
- transition:.25s;
+ border:1px solid #31caff;border-radius:15px;padding:25px 12px;
+ text-align:center;cursor:pointer;box-shadow:0 0 17px #00bfff22;
 }
-
-.carpeta:hover{
- box-shadow:0 0 25px #00cfff77;
- transform:translateY(-3px);
-}
-
-.icono{
- font-size:65px;
- filter:drop-shadow(0 0 12px #00cfff);
-}
-
-.carpeta h2{
- color:#58dcff;
- letter-spacing:2px;
-}
-
-.carpeta p{
- color:#b6cbd6;
- font-size:13px;
-}
-
+.carpeta:hover{box-shadow:0 0 25px #00cfff77}
+.icono{font-size:60px}
+.carpeta h2{color:#58dcff;letter-spacing:2px}
+.carpeta p{color:#b6cbd6;font-size:13px}
 button{
- background:#061a29;
- border:1px solid #40d9ff;
- color:white;
- border-radius:7px;
- padding:12px 18px;
- font-weight:bold;
- cursor:pointer;
+ background:#061a29;border:1px solid #40d9ff;color:white;
+ border-radius:7px;padding:12px 16px;font-weight:bold;cursor:pointer;
 }
-
-button:hover{
- background:#0d4260;
-}
-
+button:hover{background:#0d4260}
 #contenido{display:none}
-
-#contenido h2{
- color:#54dcff;
- letter-spacing:2px;
-}
-
-.galeria{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:15px;
- margin-top:20px;
-}
-
+#contenido h2{color:#54dcff;letter-spacing:2px}
 .elemento{
- background:#0b1b29;
- border:1px solid #277e9d;
- border-radius:10px;
- overflow:hidden;
+ background:#0b1b29;border:1px solid #277e9d;
+ border-radius:10px;overflow:hidden;
 }
-
-.elemento img,
-.elemento video{
- width:100%;
- display:block;
- aspect-ratio:16/10;
- object-fit:contain;
- background:#000;
+.elemento img,.elemento video{
+ width:100%;display:block;aspect-ratio:16/10;
+ object-fit:contain;background:#000;
 }
-
-.elemento p{
- padding:10px;
- margin:0;
- text-align:center;
- font-size:13px;
-}
-
-.elemento button{
- display:block;
- margin:10px auto;
-}
-
-.error{
- color:#ff8b8b!important;
-}
-
+.elemento p{text-align:center;padding:10px;margin:0;font-size:13px}
+.elemento button{display:block;margin:10px auto}
+.error{color:#ff8585!important}
 #visor{
- display:none;
- position:fixed;
- inset:0;
- z-index:20;
- background:#000f;
- padding:15px;
- align-items:center;
- justify-content:center;
- flex-direction:column;
+ display:none;position:fixed;inset:0;z-index:20;
+ background:#000f;padding:15px;
+ align-items:center;justify-content:center;flex-direction:column;
 }
-
-#multimedia{
- width:100%;
- display:flex;
- justify-content:center;
-}
-
-#visor img{
- max-width:100%;
- max-height:75vh;
- border:1px solid #42dfff;
- border-radius:8px;
-}
-
-#cerrar{margin-top:18px}
-
+#visor img{max-width:100%;max-height:75vh}
 footer{
- position:fixed;
- bottom:0;
- width:100%;
- padding:13px;
- text-align:center;
- background:#030a11ee;
- border-top:1px solid #36cfff66;
+ position:fixed;bottom:0;width:100%;padding:13px;
+ text-align:center;background:#030a11ee;border-top:1px solid #36cfff66;
 }
-
-footer a{
- color:#65dcff;
- text-decoration:none;
- font-size:13px;
- letter-spacing:2px;
-}
+footer a{color:#65dcff;text-decoration:none;font-size:13px}
 </style>
 </head>
 
@@ -205,9 +81,7 @@ footer a{
 <main class="contenedor">
 
 <div id="inicio">
-<div class="estado">
-SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO
-</div>
+<div class="estado">SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO</div>
 
 <div class="carpetas">
 
@@ -239,7 +113,7 @@ SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO
 
 <div id="visor">
 <div id="multimedia"></div>
-<button id="cerrar" onclick="cerrarVisor()">✕ CERRAR</button>
+<button onclick="cerrarVisor()" style="margin-top:20px">✕ CERRAR</button>
 </div>
 
 <footer>
@@ -248,59 +122,34 @@ SELECCIONA UN MODELO PARA ACCEDER A SU ARCHIVO
 
 <script>
 
-/* ARCHIVOS DE CADA MODELO */
+/* TODOS LOS ARCHIVOS ESTÁN EN LA RAÍZ DE GITHUB */
 
 const archivos={
 
- ES74:[
-  {
-   tipo:"video",
-   nombre:"ES741.mp4",
-   ruta:"MOD.ES74/ES741.mp4"
-  },
-  {
-   tipo:"imagen",
-   nombre:"Fotografía ES74",
-   ruta:"MOD.ES74/foto1.jpg"
-  },
-  {
-   tipo:"imagen",
-   nombre:"Fotografía ES74 2",
-   ruta:"MOD.ES74/foto2.jpg"
-  }
- ],
+ES74:[
+ {tipo:"video",nombre:"ES741.mp4",ruta:"ES741.mp4"},
 
- ES274:[
-  {
-   tipo:"video",
-   nombre:"ES2741.mp4",
-   ruta:"MOD.ES274/ES2741.mp4"
-  },
-  {
-   tipo:"video",
-   nombre:"ES2742.mp4",
-   ruta:"MOD.ES274/ES2742.mp4"
-  },
-  {
-   tipo:"video",
-   nombre:"ES2743.mp4",
-   ruta:"MOD.ES274/ES2743.mp4"
-  },
-  {
-   tipo:"imagen",
-   nombre:"Fotografía ES274",
-   ruta:"MOD.ES274/foto1.jpg"
-  },
-  {
-   tipo:"imagen",
-   nombre:"Fotografía ES274 2",
-   ruta:"MOD.ES274/foto2.jpg"
-  }
- ]
+ {tipo:"imagen",nombre:"ES741",ruta:"ES741.png"},
+ {tipo:"imagen",nombre:"ES7410",ruta:"ES7410.png"},
+ {tipo:"imagen",nombre:"ES7411",ruta:"ES7411.png"},
+ {tipo:"imagen",nombre:"ES7412",ruta:"ES7412.png"},
+ {tipo:"imagen",nombre:"ES742",ruta:"ES742.png"},
+ {tipo:"imagen",nombre:"ES743",ruta:"ES743.png"},
+ {tipo:"imagen",nombre:"ES744",ruta:"ES744.png"},
+ {tipo:"imagen",nombre:"ES745",ruta:"ES745.png"},
+ {tipo:"imagen",nombre:"ES746",ruta:"ES746.png"},
+ {tipo:"imagen",nombre:"ES747",ruta:"ES747.png"},
+ {tipo:"imagen",nombre:"ES748",ruta:"ES748.png"},
+ {tipo:"imagen",nombre:"ES749",ruta:"ES749.png"}
+],
+
+ES274:[
+ {tipo:"video",nombre:"ES2741.mp4",ruta:"ES2741.mp4"},
+ {tipo:"video",nombre:"ES2742.mp4",ruta:"ES2742.mp4"},
+ {tipo:"video",nombre:"ES2743.mp4",ruta:"ES2743.mp4"}
+]
 
 };
-
-/* ABRIR CARPETAS */
 
 function abrir(modelo){
 
@@ -316,7 +165,31 @@ function abrir(modelo){
   const tarjeta=document.createElement("div");
   tarjeta.className="elemento";
 
-  if(archivo.tipo==="imagen"){
+  if(archivo.tipo==="video"){
+
+   const video=document.createElement("video");
+   video.controls=true;
+   video.playsInline=true;
+   video.preload="metadata";
+
+   const source=document.createElement("source");
+   source.src=archivo.ruta;
+   source.type="video/mp4";
+
+   video.appendChild(source);
+
+   const nombre=document.createElement("p");
+   nombre.textContent=archivo.nombre;
+
+   video.addEventListener("error",()=>{
+    nombre.textContent=archivo.nombre+" · NO SE PUEDE CARGAR";
+    nombre.classList.add("error");
+   });
+
+   tarjeta.appendChild(video);
+   tarjeta.appendChild(nombre);
+
+  }else{
 
    const img=document.createElement("img");
    img.src=archivo.ruta;
@@ -336,30 +209,6 @@ function abrir(modelo){
 
    tarjeta.appendChild(boton);
 
-  }else{
-
-   const video=document.createElement("video");
-   video.controls=true;
-   video.playsInline=true;
-   video.preload="metadata";
-
-   const source=document.createElement("source");
-   source.src=archivo.ruta;
-   source.type="video/mp4";
-
-   video.appendChild(source);
-
-   const nombre=document.createElement("p");
-   nombre.textContent=archivo.nombre;
-
-   video.onerror=()=>{
-    nombre.textContent=archivo.nombre+" · ERROR AL CARGAR";
-    nombre.classList.add("error");
-   };
-
-   tarjeta.appendChild(video);
-   tarjeta.appendChild(nombre);
-
   }
 
   galeria.appendChild(tarjeta);
@@ -367,8 +216,6 @@ function abrir(modelo){
  });
 
 }
-
-/* VISOR DE FOTOGRAFÍAS */
 
 function ver(ruta){
 
@@ -385,30 +232,24 @@ function ver(ruta){
 
 }
 
-/* VOLVER */
-
 function volver(){
 
- cerrarVisor();
+ document.querySelectorAll("#galeria video").forEach(v=>v.pause());
 
  document.getElementById("contenido").style.display="none";
  document.getElementById("inicio").style.display="block";
 
-}
+ cerrarVisor();
 
-/* CERRAR VISOR */
+}
 
 function cerrarVisor(){
 
- const visor=document.getElementById("visor");
- const multimedia=document.getElementById("multimedia");
-
- multimedia.innerHTML="";
- visor.style.display="none";
+ document.getElementById("multimedia").innerHTML="";
+ document.getElementById("visor").style.display="none";
 
 }
 
 </script>
-
 </body>
 </html>
