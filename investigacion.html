@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,7 +30,6 @@ body{
  linear-gradient(145deg,#02050b,#061321 55%,#02050a);
 }
 
-/* FONDO FUTURISTA */
 body:before{
  content:"";
  position:fixed;
@@ -60,7 +60,6 @@ body:after{
 
 main,header,footer{position:relative;z-index:1}
 
-/* CABECERA */
 header{
  text-align:center;
  padding:30px 12px 24px;
@@ -106,11 +105,8 @@ header{
  animation:parpadeo 1.5s infinite;
 }
 
-@keyframes parpadeo{
- 50%{opacity:.3}
-}
+@keyframes parpadeo{50%{opacity:.3}}
 
-/* CONTENEDOR */
 .contenedor{
  width:100%;
  max-width:1150px;
@@ -149,7 +145,6 @@ header{
  margin:15px 0 23px;
 }
 
-/* CARPETAS */
 .carpetas{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
@@ -163,8 +158,7 @@ header{
  overflow:hidden;
  border:1px solid rgba(0,234,255,.35);
  border-radius:8px;
- background:
- linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
+ background:linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
  color:white;
  cursor:pointer;
  text-align:center;
@@ -221,7 +215,6 @@ header{
  letter-spacing:1px;
 }
 
-/* PANELES */
 .panel{
  display:none;
  margin-top:20px;
@@ -270,7 +263,6 @@ header{
  margin-bottom:19px;
 }
 
-/* DOCUMENTOS */
 .documentos{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -352,7 +344,6 @@ header{
  box-shadow:0 0 17px rgba(0,234,255,.4);
 }
 
-/* BOTONES */
 .boton{
  display:inline-block;
  margin:20px 8px 0 0;
@@ -380,7 +371,6 @@ header{
  margin-top:28px;
 }
 
-/* PIE */
 footer{
  padding:25px 10px;
  text-align:center;
@@ -422,7 +412,6 @@ footer strong{color:var(--gold)}
  </div>
 
  <section id="inicio">
-
   <h1 class="titulo">CENTRO DE INVESTIGACIÓN</h1>
 
   <p class="intro">
@@ -491,10 +480,10 @@ footer strong{color:var(--gold)}
    <article class="documento">
     <h3>DOCUMENTO GRÁFICO</h3>
 
-    <a href="investigacion/ES4/inv.es741.png" target="_blank">
+    <a href="./inv.es741.png" target="_blank" rel="noopener">
      <div class="vista">
       <img
-       src="investigacion/ES4/inv.es741.png"
+       src="./inv.es741.png"
        alt="Imagen del dossier ES741"
        onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#ffbd58;font-size:12px;padding:15px>IMAGEN NO ENCONTRADA</span>'">
      </div>
@@ -503,8 +492,8 @@ footer strong{color:var(--gold)}
     <div class="nombre-archivo">inv.es741.png</div>
 
     <a class="abrir"
-       href="investigacion/ES4/inv.es741.png"
-       target="_blank">
+       href="./inv.es741.png"
+       target="_blank" rel="noopener">
        ABRIR IMAGEN
     </a>
    </article>
@@ -519,8 +508,8 @@ footer strong{color:var(--gold)}
     <div class="nombre-archivo">inv.es741.pdf</div>
 
     <a class="abrir"
-       href="investigacion/ES4/inv.es741.pdf"
-       target="_blank">
+       href="./inv.es741.pdf"
+       target="_blank" rel="noopener">
        ABRIR DOSSIER PDF
     </a>
    </article>
