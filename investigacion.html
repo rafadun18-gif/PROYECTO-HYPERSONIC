@@ -15,9 +15,8 @@
  --gold:#e5bd65;
  --white:#eaf8ff;
  --muted:#8ca9bd;
- --panel:rgba(5,19,35,.96);
+ --panel:rgba(5,19,35,.94);
 }
-
 body{
  min-height:100vh;
  overflow-x:hidden;
@@ -28,7 +27,6 @@ body{
  radial-gradient(ellipse at 90% 80%,#071e36 0%,transparent 45%),
  linear-gradient(145deg,#02050b,#061321 55%,#02050a);
 }
-
 body:before{
  content:"";
  position:fixed;
@@ -55,8 +53,7 @@ body:after{
  rgba(0,0,0,.12) 5px
  );
 }
-
-header,main,footer{position:relative;z-index:1}
+main,header,footer{position:relative;z-index:1}
 
 header{
  text-align:center;
@@ -80,7 +77,6 @@ header{
  letter-spacing:4px;
  margin-top:10px;
 }
-
 .estado{
  display:inline-flex;
  align-items:center;
@@ -105,7 +101,6 @@ header{
 }
 
 @keyframes parpadeo{50%{opacity:.3}}
-
 .contenedor{
  width:100%;
  max-width:1150px;
@@ -136,7 +131,6 @@ header{
  margin-bottom:25px;
  max-width:680px;
 }
-
 .linea{
  width:100%;
  height:1px;
@@ -146,13 +140,12 @@ header{
 
 .carpetas{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
  gap:16px;
 }
-
 .carpeta{
  position:relative;
- min-height:190px;
+ min-height:170px;
  padding:20px 12px;
  overflow:hidden;
  border:1px solid rgba(0,234,255,.35);
@@ -164,7 +157,6 @@ header{
  transition:.3s;
  box-shadow:inset 0 0 25px rgba(0,160,255,.04);
 }
-
 .carpeta:before{
  content:"";
  position:absolute;
@@ -181,11 +173,10 @@ header{
 .carpeta:hover{
  transform:translateY(-5px);
  border-color:var(--cyan);
- box-shadow:0 0 22px rgba(0,234,255,.18);
+ box-shadow:0 0 22px rgba(0,234,255,.18),inset 0 0 25px rgba(0,160,255,.1);
 }
 
 .carpeta:active{transform:scale(.97)}
-
 .numero{
  position:absolute;
  top:9px;
@@ -198,25 +189,24 @@ header{
 .icono{
  display:block;
  font-size:43px;
- margin:15px 0;
+ margin:12px 0 15px;
  filter:drop-shadow(0 0 9px rgba(0,234,255,.45));
 }
 
 .carpeta strong{
  display:block;
  color:var(--cyan);
- font-size:19px;
- letter-spacing:2px;
+ font-size:18px;
+ letter-spacing:3px;
 }
 
 .carpeta small{
  display:block;
  color:#91aabd;
  font-size:9px;
- margin-top:10px;
+ margin-top:9px;
  letter-spacing:1px;
 }
-
 .panel{
  display:none;
  margin-top:20px;
@@ -234,7 +224,6 @@ header{
  from{opacity:0;transform:translateY(12px)}
  to{opacity:1;transform:translateY(0)}
 }
-
 .panel-cabecera{
  display:flex;
  justify-content:space-between;
@@ -264,7 +253,6 @@ header{
  line-height:1.7;
  margin-bottom:19px;
 }
-
 .documentos{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -292,7 +280,6 @@ header{
  letter-spacing:1px;
  margin-bottom:13px;
 }
-
 .vista{
  display:flex;
  min-height:190px;
@@ -325,7 +312,6 @@ header{
  margin-top:12px;
  overflow-wrap:anywhere;
 }
-
 .abrir{
  display:block;
  width:100%;
@@ -347,15 +333,6 @@ header{
  color:#00101b;
  box-shadow:0 0 17px rgba(0,234,255,.4);
 }
-
-.video-investigacion{
- width:100%;
- display:block;
- background:#000;
- border:1px solid #29445a;
- border-radius:5px;
-}
-
 .boton{
  display:inline-block;
  margin:20px 8px 0 0;
@@ -369,7 +346,7 @@ header{
  font-size:10px;
  letter-spacing:1px;
  cursor:pointer;
-}
+ }
 
 .boton:hover{
  background:var(--gold);
@@ -382,7 +359,6 @@ header{
  gap:9px;
  margin-top:28px;
 }
-
 footer{
  padding:25px 10px;
  text-align:center;
@@ -397,8 +373,8 @@ footer strong{color:var(--gold)}
 @media(max-width:480px){
  header{padding-top:24px}
  .contenedor{padding:20px 12px 35px}
- .carpetas{grid-template-columns:1fr 1fr;gap:10px}
- .carpeta{min-height:155px;padding:13px 7px}
+ .carpetas{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .carpeta{min-height:145px;padding:13px 7px}
  .icono{font-size:35px}
  .panel{padding:13px}
  .documentos{grid-template-columns:1fr}
@@ -406,7 +382,6 @@ footer strong{color:var(--gold)}
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -427,11 +402,10 @@ footer strong{color:var(--gold)}
  <section id="inicio">
 
   <h1 class="titulo">CENTRO DE INVESTIGACIÓN</h1>
-
   <p class="intro">
    ARCHIVO CENTRAL DE PROYECTOS AEROESPACIALES.
-   Selecciona el modelo de avión para acceder a sus
-   expedientes, imágenes y documentación técnica.
+   Selecciona una unidad de investigación para acceder
+   a sus expedientes, imágenes y documentación técnica.
   </p>
 
   <div class="linea"></div>
@@ -441,75 +415,88 @@ footer strong{color:var(--gold)}
    <button class="carpeta" onclick="abrirModelo('ES74')">
     <span class="numero">UNIDAD 01</span>
     <span class="icono">📁</span>
-    <strong>MODELO ES74</strong>
-    <small>ARCHIVO DE INVESTIGACIÓN ES74</small>
+    <strong>ES74</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
    </button>
-
-   <button class="carpeta" onclick="abrirModelo('ES274')">
+   <button class="carpeta" onclick="abrirModelo('ES5')">
     <span class="numero">UNIDAD 02</span>
     <span class="icono">📁</span>
-    <strong>MODELO ES274</strong>
-    <small>ARCHIVO DE INVESTIGACIÓN ES274</small>
+    <strong>ES5</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+   <button class="carpeta" onclick="abrirModelo('ES6')">
+    <span class="numero">UNIDAD 03</span>
+    <span class="icono">📁</span>
+    <strong>ES6</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+   <button class="carpeta" onclick="abrirModelo('ES7')">
+    <span class="numero">UNIDAD 04</span>
+    <span class="icono">📁</span>
+    <strong>ES7</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+   <button class="carpeta" onclick="abrirModelo('ES8')">
+    <span class="numero">UNIDAD 05</span>
+    <span class="icono">📁</span>
+    <strong>ES8</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
    </button>
 
   </div>
  </section>
 
- <!-- INVESTIGACIÓN MODELO ES74 -->
-
+ <!-- UNIDAD ES74 -->
  <section class="panel" id="ES74">
-
   <div class="panel-cabecera">
-   <h2>📂 MODELO ES74</h2>
+   <h2>📂 UNIDAD ES74</h2>
    <span class="codigo">EXPEDIENTE Nº 074</span>
   </div>
 
   <p class="descripcion">
    ARCHIVO TÉCNICO ES74 · DOCUMENTACIÓN DE INVESTIGACIÓN.
-   Los documentos se cargan directamente desde la raíz
-   del repositorio PROYECTO-HYPERSONIC.
+   Selecciona el archivo que deseas consultar.
   </p>
 
   <div class="documentos">
 
+   <!-- IMAGEN PNG -->
    <article class="documento">
     <h3>DOCUMENTO GRÁFICO</h3>
-
     <div class="vista">
      <img
-      src="./inv.es74.png"
-      alt="Investigación gráfica del modelo ES74"
-      onerror="this.parentElement.innerHTML='<span style=color:#ffbd58;padding:15px;font-size:12px>NO SE HA PODIDO CARGAR inv.es74.png</span>'">
+      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.png"
+      alt="Imagen del dossier ES741"
+      onerror="this.alt='No se ha podido cargar inv.es741.png';this.parentElement.innerHTML='<span style=color:#ffbd58;font-size:12px;padding:15px>NO SE HA PODIDO CARGAR LA IMAGEN</span>'">
     </div>
 
-    <div class="nombre-archivo">inv.es74.png</div>
-
+    <div class="nombre-archivo">inv.es741.png</div>
     <a class="abrir"
-       href="./inv.es74.png"
-       target="_blank"
-       rel="noopener">
+       href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.png"
+       target="_blank" rel="noopener">
        ABRIR IMAGEN PNG
     </a>
    </article>
 
+   <!-- DOCUMENTO PDF -->
    <article class="documento">
     <h3>DOSSIER TÉCNICO PDF</h3>
 
     <div class="vista">
      <iframe
       class="vista-pdf"
-      src="./inv.741.pdf"
-      title="Dossier técnico del modelo ES74"
+      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.pdf"
+      title="Dossier técnico ES741"
       loading="lazy">
      </iframe>
     </div>
-
-    <div class="nombre-archivo">inv.741.pdf</div>
+    <div class="nombre-archivo">inv.es741.pdf</div>
 
     <a class="abrir"
-       href="./inv.741.pdf"
-       target="_blank"
-       rel="noopener">
+       href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.pdf"
+       target="_blank" rel="noopener">
        ABRIR DOSSIER PDF
     </a>
    </article>
@@ -522,76 +509,57 @@ footer strong{color:var(--gold)}
 
  </section>
 
- <!-- INVESTIGACIÓN MODELO ES274 -->
-
- <section class="panel" id="ES274">
-
+ <!-- UNIDAD ES5 -->
+ <section class="panel" id="ES5">
   <div class="panel-cabecera">
-   <h2>📂 MODELO ES274</h2>
-   <span class="codigo">EXPEDIENTE Nº 274</span>
+   <h2>📂 UNIDAD ES5</h2>
+   <span class="codigo">EXPEDIENTE Nº 005</span>
   </div>
-
   <p class="descripcion">
-   ARCHIVO DE INVESTIGACIÓN DEL MODELO ES274.
-   Material audiovisual del proyecto disponible en
-   el repositorio principal.
+   ARCHIVO DE INVESTIGACIÓN ES5. Espacio preparado para incorporar nuevos documentos, imágenes y dossiers.
   </p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
 
-  <div class="documentos">
-
-   <article class="documento">
-    <h3>REGISTRO AUDIOVISUAL ES274 · 01</h3>
-    <video class="video-investigacion"
-     controls playsinline preload="metadata">
-     <source src="./ES2741.mp4" type="video/mp4">
-     Tu navegador no puede reproducir este vídeo.
-    </video>
-    <div class="nombre-archivo">ES2741.mp4</div>
-    <a class="abrir" href="./ES2741.mp4"
-     target="_blank" rel="noopener">
-     ABRIR VÍDEO
-    </a>
-   </article>
-
-   <article class="documento">
-    <h3>REGISTRO AUDIOVISUAL ES274 · 02</h3>
-    <video class="video-investigacion"
-     controls playsinline preload="metadata">
-     <source src="./ES2742.mp4" type="video/mp4">
-     Tu navegador no puede reproducir este vídeo.
-    </video>
-    <div class="nombre-archivo">ES2742.mp4</div>
-    <a class="abrir" href="./ES2742.mp4"
-     target="_blank" rel="noopener">
-     ABRIR VÍDEO
-    </a>
-   </article>
-
-   <article class="documento">
-    <h3>REGISTRO AUDIOVISUAL ES274 · 03</h3>
-    <video class="video-investigacion"
-     controls playsinline preload="metadata">
-     <source src="./ES2743.mp4" type="video/mp4">
-     Tu navegador no puede reproducir este vídeo.
-    </video>
-    <div class="nombre-archivo">ES2743.mp4</div>
-    <a class="abrir" href="./ES2743.mp4"
-     target="_blank" rel="noopener">
-     ABRIR VÍDEO
-    </a>
-   </article>
-
+ <!-- UNIDAD ES6 -->
+ <section class="panel" id="ES6">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES6</h2>
+   <span class="codigo">EXPEDIENTE Nº 006</span>
   </div>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES6. Espacio preparado para nuevos expedientes.
+  </p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
 
-  <button class="boton" onclick="volverCarpetas()">
-   ← VOLVER AL ARCHIVO CENTRAL
-  </button>
+ <!-- UNIDAD ES7 -->
+ <section class="panel" id="ES7">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES7</h2>
+   <span class="codigo">EXPEDIENTE Nº 007</span>
+  </div>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES7. Espacio preparado para nuevos expedientes.
+  </p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
 
+ <!-- UNIDAD ES8 -->
+ <section class="panel" id="ES8">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES8</h2>
+   <span class="codigo">EXPEDIENTE Nº 008</span>
+  </div>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES8. Espacio preparado para nuevos expedientes.
+  </p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
  </section>
 
  <nav class="navegacion">
-  <a class="boton" href="./index.html">← PORTADA PRINCIPAL</a>
-  <a class="boton" href="./catalogo.html">ACCEDER AL CATÁLOGO →</a>
+  <a class="boton" href="index.html">← PORTADA PRINCIPAL</a>
+  <a class="boton" href="catalogo.html">ACCEDER AL CATÁLOGO →</a>
  </nav>
 
 </main>
@@ -599,7 +567,7 @@ footer strong{color:var(--gold)}
 <footer>
  HYPERSONIC ALLIANCE<br><br>
  <strong>RESEARCH & DEVELOPMENT DIVISION</strong><br><br>
- ES74 · ES274 · CENTRO DE INVESTIGACIÓN
+ ES74 · CENTRO DE INVESTIGACIÓN
 </footer>
 
 <script>
@@ -609,17 +577,13 @@ function abrirModelo(modelo){
  document.querySelectorAll(".panel").forEach(panel=>{
   panel.classList.remove("activo");
  });
-
  const seleccionado=document.getElementById(modelo);
 
  if(seleccionado){
   seleccionado.classList.add("activo");
  }
 
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function volverCarpetas(){
@@ -628,11 +592,7 @@ function volverCarpetas(){
  });
 
  document.getElementById("inicio").style.display="block";
-
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
 
