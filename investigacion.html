@@ -12,11 +12,10 @@
 
 :root{
  --cyan:#00eaff;
- --blue:#087bff;
  --gold:#e5bd65;
  --white:#eaf8ff;
  --muted:#8ca9bd;
- --panel:rgba(5,19,35,.88);
+ --panel:rgba(5,19,35,.94);
 }
 
 body{
@@ -41,7 +40,6 @@ body:before{
  linear-gradient(rgba(0,234,255,.12) 1px,transparent 1px),
  linear-gradient(90deg,rgba(0,234,255,.12) 1px,transparent 1px);
  background-size:42px 42px;
- mask-image:linear-gradient(to bottom,black,transparent 90%);
 }
 
 body:after{
@@ -98,7 +96,8 @@ header{
 }
 
 .punto{
- width:7px;height:7px;
+ width:7px;
+ height:7px;
  border-radius:50%;
  background:#00ff9d;
  box-shadow:0 0 10px #00ff9d;
@@ -169,8 +168,10 @@ header{
 .carpeta:before{
  content:"";
  position:absolute;
- top:0;left:-100%;
- width:100%;height:2px;
+ top:0;
+ left:-100%;
+ width:100%;
+ height:2px;
  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
  transition:.5s;
 }
@@ -187,7 +188,8 @@ header{
 
 .numero{
  position:absolute;
- top:9px;right:11px;
+ top:9px;
+ right:11px;
  font-size:9px;
  color:var(--gold);
  letter-spacing:1px;
@@ -309,10 +311,12 @@ header{
  object-fit:contain;
 }
 
-.pdf-icon{
- font-size:70px;
- color:#ff5b65;
- text-shadow:0 0 20px rgba(255,50,70,.4);
+.vista-pdf{
+ display:block;
+ width:100%;
+ height:350px;
+ border:0;
+ background:#fff;
 }
 
 .nombre-archivo{
@@ -390,6 +394,7 @@ footer strong{color:var(--gold)}
  .icono{font-size:35px}
  .panel{padding:13px}
  .documentos{grid-template-columns:1fr}
+ .vista-pdf{height:300px}
 }
 </style>
 </head>
@@ -412,6 +417,7 @@ footer strong{color:var(--gold)}
  </div>
 
  <section id="inicio">
+
   <h1 class="titulo">CENTRO DE INVESTIGACIÓN</h1>
 
   <p class="intro">
@@ -424,10 +430,10 @@ footer strong{color:var(--gold)}
 
   <div class="carpetas">
 
-   <button class="carpeta" onclick="abrirModelo('ES4')">
+   <button class="carpeta" onclick="abrirModelo('ES74')">
     <span class="numero">UNIDAD 01</span>
     <span class="icono">📁</span>
-    <strong>ES4</strong>
+    <strong>ES74</strong>
     <small>ARCHIVO DE INVESTIGACIÓN</small>
    </button>
 
@@ -462,53 +468,58 @@ footer strong{color:var(--gold)}
   </div>
  </section>
 
- <!-- UNIDAD ES4 -->
- <section class="panel" id="ES4">
+ <!-- UNIDAD ES74 -->
+ <section class="panel" id="ES74">
 
   <div class="panel-cabecera">
-   <h2>📂 UNIDAD ES4</h2>
-   <span class="codigo">EXPEDIENTE Nº 004</span>
+   <h2>📂 UNIDAD ES74</h2>
+   <span class="codigo">EXPEDIENTE Nº 074</span>
   </div>
 
   <p class="descripcion">
-   ARCHIVO TÉCNICO ES741 · DOCUMENTACIÓN DE INVESTIGACIÓN.
+   ARCHIVO TÉCNICO ES74 · DOCUMENTACIÓN DE INVESTIGACIÓN.
    Selecciona el archivo que deseas consultar.
   </p>
 
   <div class="documentos">
 
+   <!-- IMAGEN PNG -->
    <article class="documento">
     <h3>DOCUMENTO GRÁFICO</h3>
 
-    <a href="./inv.es741.png" target="_blank" rel="noopener">
-     <div class="vista">
-      <img
-       src="./inv.es741.png"
-       alt="Imagen del dossier ES741"
-       onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#ffbd58;font-size:12px;padding:15px>IMAGEN NO ENCONTRADA</span>'">
-     </div>
-    </a>
+    <div class="vista">
+     <img
+      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.png"
+      alt="Imagen del dossier ES741"
+      onerror="this.alt='No se ha podido cargar inv.es741.png';this.parentElement.innerHTML='<span style=color:#ffbd58;font-size:12px;padding:15px>NO SE HA PODIDO CARGAR LA IMAGEN</span>'">
+    </div>
 
     <div class="nombre-archivo">inv.es741.png</div>
 
     <a class="abrir"
-       href="./inv.es741.png"
+       href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.png"
        target="_blank" rel="noopener">
-       ABRIR IMAGEN
+       ABRIR IMAGEN PNG
     </a>
    </article>
 
+   <!-- DOCUMENTO PDF -->
    <article class="documento">
     <h3>DOSSIER TÉCNICO PDF</h3>
 
     <div class="vista">
-     <span class="pdf-icon">▤</span>
+     <iframe
+      class="vista-pdf"
+      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.pdf"
+      title="Dossier técnico ES741"
+      loading="lazy">
+     </iframe>
     </div>
 
     <div class="nombre-archivo">inv.es741.pdf</div>
 
     <a class="abrir"
-       href="./inv.es741.pdf"
+       href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.pdf"
        target="_blank" rel="noopener">
        ABRIR DOSSIER PDF
     </a>
@@ -522,40 +533,51 @@ footer strong{color:var(--gold)}
 
  </section>
 
- <!-- OTRAS UNIDADES -->
+ <!-- UNIDAD ES5 -->
  <section class="panel" id="ES5">
   <div class="panel-cabecera">
    <h2>📂 UNIDAD ES5</h2>
    <span class="codigo">EXPEDIENTE Nº 005</span>
   </div>
-  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES5. ESPACIO preparado para incorporar nuevos documentos, imágenes y dossiers.</p>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES5. Espacio preparado para incorporar nuevos documentos, imágenes y dossiers.
+  </p>
   <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
  </section>
 
+ <!-- UNIDAD ES6 -->
  <section class="panel" id="ES6">
   <div class="panel-cabecera">
    <h2>📂 UNIDAD ES6</h2>
    <span class="codigo">EXPEDIENTE Nº 006</span>
   </div>
-  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES6. Espacio preparado para nuevos expedientes.</p>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES6. Espacio preparado para nuevos expedientes.
+  </p>
   <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
  </section>
 
+ <!-- UNIDAD ES7 -->
  <section class="panel" id="ES7">
   <div class="panel-cabecera">
    <h2>📂 UNIDAD ES7</h2>
    <span class="codigo">EXPEDIENTE Nº 007</span>
   </div>
-  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES7. Espacio preparado para nuevos expedientes.</p>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES7. Espacio preparado para nuevos expedientes.
+  </p>
   <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
  </section>
 
+ <!-- UNIDAD ES8 -->
  <section class="panel" id="ES8">
   <div class="panel-cabecera">
    <h2>📂 UNIDAD ES8</h2>
    <span class="codigo">EXPEDIENTE Nº 008</span>
   </div>
-  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES8. Espacio preparado para nuevos expedientes.</p>
+  <p class="descripcion">
+   ARCHIVO DE INVESTIGACIÓN ES8. Espacio preparado para nuevos expedientes.
+  </p>
   <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
  </section>
 
