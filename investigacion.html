@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030914">
+<title>HYPERSONIC ALLIANCE | RESEARCH CENTER</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+ --cyan:#00eaff;
+ --blue:#087bff;
+ --gold:#e5bd65;
+ --white:#eaf8ff;
+ --muted:#8ca9bd;
+ --panel:rgba(5,19,35,.88);
+}
+
+body{
+ min-height:100vh;
+ overflow-x:hidden;
+ color:var(--white);
+ font-family:Arial,Helvetica,sans-serif;
+ background:
+ radial-gradient(ellipse at 50% -20%,#12365a 0%,transparent 55%),
+ radial-gradient(ellipse at 90% 80%,#071e36 0%,transparent 45%),
+ linear-gradient(145deg,#02050b,#061321 55%,#02050a);
+}
+
+/* FONDO FUTURISTA */
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:0;
+ opacity:.22;
+ background-image:
+ linear-gradient(rgba(0,234,255,.12) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(0,234,255,.12) 1px,transparent 1px);
+ background-size:42px 42px;
+ mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+body:after{
+ content:"";
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:0;
+ background:repeating-linear-gradient(
+ to bottom,
+ transparent 0px,
+ transparent 4px,
+ rgba(0,0,0,.12) 5px
+ );
+}
+
+main,header,footer{position:relative;z-index:1}
+
+/* CABECERA */
+header{
+ text-align:center;
+ padding:30px 12px 24px;
+ border-bottom:1px solid rgba(0,234,255,.4);
+ background:linear-gradient(180deg,rgba(4,17,31,.96),rgba(4,17,31,.45));
+ box-shadow:0 8px 35px rgba(0,180,255,.08);
+}
+
+.logo{
+ color:var(--gold);
+ font-size:clamp(23px,5vw,39px);
+ font-weight:900;
+ letter-spacing:4px;
+ text-shadow:0 0 15px rgba(229,189,101,.4);
+}
+
+.sublogo{
+ color:var(--cyan);
+ font-size:10px;
+ letter-spacing:4px;
+ margin-top:10px;
+}
+
+.estado{
+ display:inline-flex;
+ align-items:center;
+ gap:8px;
+ margin-top:17px;
+ padding:7px 13px;
+ border:1px solid rgba(0,234,255,.35);
+ border-radius:30px;
+ background:rgba(0,234,255,.06);
+ color:#a8f8ff;
+ font-size:9px;
+ letter-spacing:2px;
+}
+
+.punto{
+ width:7px;height:7px;
+ border-radius:50%;
+ background:#00ff9d;
+ box-shadow:0 0 10px #00ff9d;
+ animation:parpadeo 1.5s infinite;
+}
+
+@keyframes parpadeo{
+ 50%{opacity:.3}
+}
+
+/* CONTENEDOR */
+.contenedor{
+ width:100%;
+ max-width:1150px;
+ margin:auto;
+ padding:25px 17px 45px;
+}
+
+.ruta{
+ color:var(--cyan);
+ font-size:10px;
+ letter-spacing:2px;
+ margin-bottom:23px;
+}
+
+.ruta span{color:var(--gold)}
+
+.titulo{
+ color:white;
+ font-size:clamp(19px,4vw,27px);
+ letter-spacing:2px;
+ margin-bottom:8px;
+}
+
+.intro{
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.7;
+ margin-bottom:25px;
+ max-width:680px;
+}
+
+.linea{
+ width:100%;
+ height:1px;
+ background:linear-gradient(90deg,var(--cyan),transparent);
+ margin:15px 0 23px;
+}
+
+/* CARPETAS */
+.carpetas{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+ gap:16px;
+}
+
+.carpeta{
+ position:relative;
+ min-height:170px;
+ padding:20px 12px;
+ overflow:hidden;
+ border:1px solid rgba(0,234,255,.35);
+ border-radius:8px;
+ background:
+ linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
+ color:white;
+ cursor:pointer;
+ text-align:center;
+ transition:.3s;
+ box-shadow:inset 0 0 25px rgba(0,160,255,.04);
+}
+
+.carpeta:before{
+ content:"";
+ position:absolute;
+ top:0;left:-100%;
+ width:100%;height:2px;
+ background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+ transition:.5s;
+}
+
+.carpeta:hover:before{left:100%}
+
+.carpeta:hover{
+ transform:translateY(-5px);
+ border-color:var(--cyan);
+ box-shadow:0 0 22px rgba(0,234,255,.18),inset 0 0 25px rgba(0,160,255,.1);
+}
+
+.carpeta:active{transform:scale(.97)}
+
+.numero{
+ position:absolute;
+ top:9px;right:11px;
+ font-size:9px;
+ color:var(--gold);
+ letter-spacing:1px;
+}
+
+.icono{
+ display:block;
+ font-size:43px;
+ margin:12px 0 15px;
+ filter:drop-shadow(0 0 9px rgba(0,234,255,.45));
+}
+
+.carpeta strong{
+ display:block;
+ color:var(--cyan);
+ font-size:18px;
+ letter-spacing:3px;
+}
+
+.carpeta small{
+ display:block;
+ color:#91aabd;
+ font-size:9px;
+ margin-top:9px;
+ letter-spacing:1px;
+}
+
+/* PANELES */
+.panel{
+ display:none;
+ margin-top:20px;
+ padding:20px;
+ border:1px solid rgba(0,234,255,.45);
+ border-radius:9px;
+ background:var(--panel);
+ box-shadow:0 0 35px rgba(0,140,255,.09);
+ animation:entrada .35s ease;
+}
+
+.panel.activo{display:block}
+
+@keyframes entrada{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+.panel-cabecera{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
+ border-bottom:1px solid rgba(0,234,255,.3);
+ padding-bottom:14px;
+ margin-bottom:17px;
+}
+
+.panel h2{
+ color:var(--gold);
+ font-size:20px;
+ letter-spacing:2px;
+}
+
+.codigo{
+ color:var(--cyan);
+ font-size:9px;
+ letter-spacing:2px;
+}
+
+.descripcion{
+ color:#a9bfce;
+ font-size:11px;
+ line-height:1.7;
+ margin-bottom:19px;
+}
+
+/* DOCUMENTOS */
+.documentos{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:16px;
+}
+
+.documento{
+ min-width:0;
+ border:1px solid rgba(0,234,255,.28);
+ border-radius:8px;
+ padding:15px;
+ text-align:center;
+ background:linear-gradient(145deg,#10283d,#071321);
+ transition:.25s;
+}
+
+.documento:hover{
+ border-color:var(--gold);
+ box-shadow:0 0 20px rgba(229,189,101,.12);
+}
+
+.documento h3{
+ color:var(--gold);
+ font-size:12px;
+ letter-spacing:1px;
+ margin-bottom:13px;
+}
+
+.vista{
+ display:flex;
+ min-height:190px;
+ align-items:center;
+ justify-content:center;
+ overflow:hidden;
+ background:#02070d;
+ border:1px solid #29445a;
+ border-radius:5px;
+}
+
+.vista img{
+ display:block;
+ width:100%;
+ max-height:350px;
+ object-fit:contain;
+}
+
+.pdf-icon{
+ font-size:70px;
+ color:#ff5b65;
+ text-shadow:0 0 20px rgba(255,50,70,.4);
+}
+
+.nombre-archivo{
+ color:#a9bfce;
+ font-size:10px;
+ margin-top:12px;
+ overflow-wrap:anywhere;
+}
+
+.abrir{
+ display:block;
+ width:100%;
+ margin-top:13px;
+ padding:12px 8px;
+ border:1px solid var(--cyan);
+ border-radius:4px;
+ color:var(--cyan);
+ background:rgba(0,234,255,.06);
+ text-decoration:none;
+ font-weight:bold;
+ font-size:10px;
+ letter-spacing:2px;
+ transition:.2s;
+}
+
+.abrir:hover{
+ background:var(--cyan);
+ color:#00101b;
+ box-shadow:0 0 17px rgba(0,234,255,.4);
+}
+
+/* BOTONES */
+.boton{
+ display:inline-block;
+ margin:20px 8px 0 0;
+ padding:12px 16px;
+ border:1px solid var(--gold);
+ border-radius:4px;
+ background:rgba(229,189,101,.06);
+ color:var(--gold);
+ text-decoration:none;
+ font-weight:bold;
+ font-size:10px;
+ letter-spacing:1px;
+ cursor:pointer;
+}
+
+.boton:hover{
+ background:var(--gold);
+ color:#050b12;
+}
+
+.navegacion{
+ display:flex;
+ flex-wrap:wrap;
+ gap:9px;
+ margin-top:28px;
+}
+
+/* PIE */
+footer{
+ padding:25px 10px;
+ text-align:center;
+ border-top:1px solid rgba(0,234,255,.2);
+ color:#668397;
+ font-size:9px;
+ letter-spacing:2px;
+}
+
+footer strong{color:var(--gold)}
+
+@media(max-width:480px){
+ header{padding-top:24px}
+ .contenedor{padding:20px 12px 35px}
+ .carpetas{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .carpeta{min-height:145px;padding:13px 7px}
+ .icono{font-size:35px}
+ .panel{padding:13px}
+ .documentos{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">HYPERSONIC ALLIANCE</div>
+ <div class="sublogo">VANGUARD AVIATION SYSTEMS</div>
+ <div class="estado">
+  <span class="punto"></span>
+  CENTRO DE INVESTIGACIÓN · SISTEMA ACTIVO
+ </div>
+</header>
+
+<main class="contenedor">
+
+ <div class="ruta">
+  HYPERSONIC ALLIANCE / <span>INVESTIGACIÓN</span>
+ </div>
+
+ <section id="inicio">
+
+  <h1 class="titulo">CENTRO DE INVESTIGACIÓN</h1>
+
+  <p class="intro">
+   ARCHIVO CENTRAL DE PROYECTOS AEROESPACIALES.
+   Selecciona una unidad de investigación para acceder
+   a sus expedientes, imágenes y documentación técnica.
+  </p>
+
+  <div class="linea"></div>
+
+  <div class="carpetas">
+
+   <button class="carpeta" onclick="abrirModelo('ES4')">
+    <span class="numero">UNIDAD 01</span>
+    <span class="icono">📁</span>
+    <strong>ES4</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+   <button class="carpeta" onclick="abrirModelo('ES5')">
+    <span class="numero">UNIDAD 02</span>
+    <span class="icono">📁</span>
+    <strong>ES5</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+   <button class="carpeta" onclick="abrirModelo('ES6')">
+    <span class="numero">UNIDAD 03</span>
+    <span class="icono">📁</span>
+    <strong>ES6</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+   <button class="carpeta" onclick="abrirModelo('ES7')">
+    <span class="numero">UNIDAD 04</span>
+    <span class="icono">📁</span>
+    <strong>ES7</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+   <button class="carpeta" onclick="abrirModelo('ES8')">
+    <span class="numero">UNIDAD 05</span>
+    <span class="icono">📁</span>
+    <strong>ES8</strong>
+    <small>ARCHIVO DE INVESTIGACIÓN</small>
+   </button>
+
+  </div>
+ </section>
+
+ <!-- UNIDAD ES4 -->
+ <section class="panel" id="ES4">
+
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES4</h2>
+   <span class="codigo">EXPEDIENTE Nº 004</span>
+  </div>
+
+  <p class="descripcion">
+   ARCHIVO TÉCNICO ES741 · DOCUMENTACIÓN DE INVESTIGACIÓN.
+   Selecciona el archivo que deseas consultar.
+  </p>
+
+  <div class="documentos">
+
+   <article class="documento">
+    <h3>DOCUMENTO GRÁFICO</h3>
+
+    <a href="investigacion/ES4/inv.es741.png" target="_blank">
+     <div class="vista">
+      <img
+       src="investigacion/ES4/inv.es741.png"
+       alt="Imagen del dossier ES741"
+       onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#ffbd58;font-size:12px;padding:15px>IMAGEN NO ENCONTRADA</span>'">
+     </div>
+    </a>
+
+    <div class="nombre-archivo">inv.es741.png</div>
+
+    <a class="abrir"
+       href="investigacion/ES4/inv.es741.png"
+       target="_blank">
+       ABRIR IMAGEN
+    </a>
+   </article>
+
+   <article class="documento">
+    <h3>DOSSIER TÉCNICO PDF</h3>
+
+    <div class="vista">
+     <span class="pdf-icon">▤</span>
+    </div>
+
+    <div class="nombre-archivo">inv.es741.pdf</div>
+
+    <a class="abrir"
+       href="investigacion/ES4/inv.es741.pdf"
+       target="_blank">
+       ABRIR DOSSIER PDF
+    </a>
+   </article>
+
+  </div>
+
+  <button class="boton" onclick="volverCarpetas()">
+   ← VOLVER AL ARCHIVO CENTRAL
+  </button>
+
+ </section>
+
+ <!-- OTRAS UNIDADES -->
+ <section class="panel" id="ES5">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES5</h2>
+   <span class="codigo">EXPEDIENTE Nº 005</span>
+  </div>
+  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES5. ESPACIO preparado para incorporar nuevos documentos, imágenes y dossiers.</p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
+
+ <section class="panel" id="ES6">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES6</h2>
+   <span class="codigo">EXPEDIENTE Nº 006</span>
+  </div>
+  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES6. Espacio preparado para nuevos expedientes.</p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
+
+ <section class="panel" id="ES7">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES7</h2>
+   <span class="codigo">EXPEDIENTE Nº 007</span>
+  </div>
+  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES7. Espacio preparado para nuevos expedientes.</p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
+
+ <section class="panel" id="ES8">
+  <div class="panel-cabecera">
+   <h2>📂 UNIDAD ES8</h2>
+   <span class="codigo">EXPEDIENTE Nº 008</span>
+  </div>
+  <p class="descripcion">ARCHIVO DE INVESTIGACIÓN ES8. Espacio preparado para nuevos expedientes.</p>
+  <button class="boton" onclick="volverCarpetas()">← VOLVER</button>
+ </section>
+
+ <nav class="navegacion">
+  <a class="boton" href="index.html">← PORTADA PRINCIPAL</a>
+  <a class="boton" href="catalogo.html">ACCEDER AL CATÁLOGO →</a>
+ </nav>
+
+</main>
+
+<footer>
+ HYPERSONIC ALLIANCE<br><br>
+ <strong>RESEARCH & DEVELOPMENT DIVISION</strong><br><br>
+ ES74 · CENTRO DE INVESTIGACIÓN
+</footer>
+
+<script>
+function abrirModelo(modelo){
+ document.getElementById("inicio").style.display="none";
+
+ document.querySelectorAll(".panel").forEach(panel=>{
+  panel.classList.remove("activo");
+ });
+
+ const seleccionado=document.getElementById(modelo);
+
+ if(seleccionado){
+  seleccionado.classList.add("activo");
+ }
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function volverCarpetas(){
+ document.querySelectorAll(".panel").forEach(panel=>{
+  panel.classList.remove("activo");
+ });
+
+ document.getElementById("inicio").style.display="block";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
