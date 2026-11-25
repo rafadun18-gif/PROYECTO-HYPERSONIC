@@ -8,51 +8,47 @@
 <title>HYPERSONIC ALLIANCE | RESEARCH CENTER</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cyan:#00eaff;
+  --gold:#e5bd65;
+  --white:#eaf8ff;
+  --muted:#8ca9bd;
+  --panel:rgba(5,19,35,.97);
 }
 
-:root {
-  --cyan: #00eaff;
-  --gold: #e5bd65;
-  --white: #eaf8ff;
-  --muted: #8ca9bd;
-  --panel: rgba(5,19,35,.96);
-}
-
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
   background:
     radial-gradient(ellipse at 50% -20%,#12365a 0%,transparent 55%),
     radial-gradient(ellipse at 90% 80%,#071e36 0%,transparent 45%),
     linear-gradient(145deg,#02050b,#061321 55%,#02050a);
 }
 
-body:before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: .22;
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.22;
   background-image:
     linear-gradient(rgba(0,234,255,.12) 1px,transparent 1px),
     linear-gradient(90deg,rgba(0,234,255,.12) 1px,transparent 1px);
-  background-size: 42px 42px;
+  background-size:42px 42px;
 }
 
-body:after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: repeating-linear-gradient(
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:repeating-linear-gradient(
     to bottom,
     transparent 0px,
     transparent 4px,
@@ -60,409 +56,390 @@ body:after {
   );
 }
 
-header, main, footer {
-  position: relative;
-  z-index: 1;
+header,main,footer{position:relative;z-index:1}
+
+header{
+  text-align:center;
+  padding:30px 12px 24px;
+  border-bottom:1px solid rgba(0,234,255,.4);
+  background:linear-gradient(180deg,rgba(4,17,31,.96),rgba(4,17,31,.45));
+  box-shadow:0 8px 35px rgba(0,180,255,.08);
 }
 
-header {
-  text-align: center;
-  padding: 30px 12px 24px;
-  border-bottom: 1px solid rgba(0,234,255,.4);
-  background: linear-gradient(180deg,rgba(4,17,31,.96),rgba(4,17,31,.45));
-  box-shadow: 0 8px 35px rgba(0,180,255,.08);
+.logo{
+  color:var(--gold);
+  font-size:clamp(23px,5vw,39px);
+  font-weight:900;
+  letter-spacing:4px;
+  text-shadow:0 0 15px rgba(229,189,101,.4);
 }
 
-.logo {
-  color: var(--gold);
-  font-size: clamp(23px,5vw,39px);
-  font-weight: 900;
-  letter-spacing: 4px;
-  text-shadow: 0 0 15px rgba(229,189,101,.4);
+.sublogo{
+  color:var(--cyan);
+  font-size:10px;
+  letter-spacing:4px;
+  margin-top:10px;
 }
 
-.sublogo {
-  color: var(--cyan);
-  font-size: 10px;
-  letter-spacing: 4px;
-  margin-top: 10px;
+.estado{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:17px;
+  padding:7px 13px;
+  border:1px solid rgba(0,234,255,.35);
+  border-radius:30px;
+  background:rgba(0,234,255,.06);
+  color:#a8f8ff;
+  font-size:9px;
+  letter-spacing:2px;
 }
 
-.estado {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 17px;
-  padding: 7px 13px;
-  border: 1px solid rgba(0,234,255,.35);
-  border-radius: 30px;
-  background: rgba(0,234,255,.06);
-  color: #a8f8ff;
-  font-size: 9px;
-  letter-spacing: 2px;
+.punto{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#00ff9d;
+  box-shadow:0 0 10px #00ff9d;
+  animation:parpadeo 1.5s infinite;
 }
 
-.punto {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #00ff9d;
-  box-shadow: 0 0 10px #00ff9d;
-  animation: parpadeo 1.5s infinite;
+@keyframes parpadeo{50%{opacity:.3}}
+
+.contenedor{
+  width:100%;
+  max-width:1150px;
+  margin:auto;
+  padding:25px 17px 45px;
 }
 
-@keyframes parpadeo {
-  50% { opacity: .3; }
+.ruta{
+  color:var(--cyan);
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:23px;
 }
 
-.contenedor {
-  width: 100%;
-  max-width: 1150px;
-  margin: auto;
-  padding: 25px 17px 45px;
+.ruta span{color:var(--gold)}
+
+.titulo{
+  color:white;
+  font-size:clamp(19px,4vw,27px);
+  letter-spacing:2px;
+  margin-bottom:8px;
 }
 
-.ruta {
-  color: var(--cyan);
-  font-size: 10px;
-  letter-spacing: 2px;
-  margin-bottom: 23px;
+.intro{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+  margin-bottom:25px;
+  max-width:680px;
 }
 
-.ruta span {
-  color: var(--gold);
+.linea{
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,var(--cyan),transparent);
+  margin:15px 0 23px;
 }
 
-.titulo {
-  color: white;
-  font-size: clamp(19px,4vw,27px);
-  letter-spacing: 2px;
-  margin-bottom: 8px;
+.carpetas{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
 }
 
-.intro {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
-  margin-bottom: 25px;
-  max-width: 680px;
+.carpeta{
+  position:relative;
+  min-height:190px;
+  padding:20px 12px;
+  overflow:hidden;
+  border:1px solid rgba(0,234,255,.35);
+  border-radius:8px;
+  background:linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
+  color:white;
+  cursor:pointer;
+  text-align:center;
+  transition:.3s;
+  box-shadow:inset 0 0 25px rgba(0,160,255,.04);
 }
 
-.linea {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg,var(--cyan),transparent);
-  margin: 15px 0 23px;
+.carpeta:hover{
+  transform:translateY(-5px);
+  border-color:var(--cyan);
+  box-shadow:0 0 22px rgba(0,234,255,.18);
 }
 
-.carpetas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 16px;
+.numero{
+  position:absolute;
+  top:9px;
+  right:11px;
+  font-size:9px;
+  color:var(--gold);
+  letter-spacing:1px;
 }
 
-.carpeta {
-  position: relative;
-  min-height: 190px;
-  padding: 20px 12px;
-  overflow: hidden;
-  border: 1px solid rgba(0,234,255,.35);
-  border-radius: 8px;
-  background: linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
-  color: white;
-  cursor: pointer;
-  text-align: center;
-  transition: .3s;
-  box-shadow: inset 0 0 25px rgba(0,160,255,.04);
+.icono{
+  display:block;
+  font-size:43px;
+  margin:15px 0;
 }
 
-.carpeta:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg,transparent,var(--cyan),transparent);
-  transition: .5s;
+.carpeta strong{
+  display:block;
+  color:var(--cyan);
+  font-size:19px;
+  letter-spacing:2px;
 }
 
-.carpeta:hover:before {
-  left: 100%;
+.carpeta small{
+  display:block;
+  color:#91aabd;
+  font-size:9px;
+  margin-top:10px;
+  letter-spacing:1px;
 }
 
-.carpeta:hover {
-  transform: translateY(-5px);
-  border-color: var(--cyan);
-  box-shadow: 0 0 22px rgba(0,234,255,.18);
+.panel{
+  display:none;
+  margin-top:20px;
+  padding:20px;
+  border:1px solid rgba(0,234,255,.45);
+  border-radius:9px;
+  background:var(--panel);
+  box-shadow:0 0 35px rgba(0,140,255,.09);
+  animation:entrada .35s ease;
 }
 
-.carpeta:active {
-  transform: scale(.97);
+.panel.activo{display:block}
+
+@keyframes entrada{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.numero {
-  position: absolute;
-  top: 9px;
-  right: 11px;
-  font-size: 9px;
-  color: var(--gold);
-  letter-spacing: 1px;
+.panel-cabecera{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  border-bottom:1px solid rgba(0,234,255,.3);
+  padding-bottom:14px;
+  margin-bottom:17px;
 }
 
-.icono {
-  display: block;
-  font-size: 43px;
-  margin: 15px 0;
-  filter: drop-shadow(0 0 9px rgba(0,234,255,.45));
+.panel h2{
+  color:var(--gold);
+  font-size:20px;
+  letter-spacing:2px;
 }
 
-.carpeta strong {
-  display: block;
-  color: var(--cyan);
-  font-size: 19px;
-  letter-spacing: 2px;
+.codigo{
+  color:var(--cyan);
+  font-size:9px;
+  letter-spacing:2px;
 }
 
-.carpeta small {
-  display: block;
-  color: #91aabd;
-  font-size: 9px;
-  margin-top: 10px;
-  letter-spacing: 1px;
+.descripcion{
+  color:#a9bfce;
+  font-size:11px;
+  line-height:1.7;
+  margin-bottom:19px;
 }
 
-.panel {
-  display: none;
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid rgba(0,234,255,.45);
-  border-radius: 9px;
-  background: var(--panel);
-  box-shadow: 0 0 35px rgba(0,140,255,.09);
-  animation: entrada .35s ease;
+/* DOCUMENTOS ES74 EN COLUMNA */
+
+.documentos-es74{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  width:100%;
 }
 
-.panel.activo {
-  display: block;
+.documento{
+  width:100%;
+  min-width:0;
+  border:1px solid rgba(0,234,255,.28);
+  border-radius:8px;
+  padding:15px;
+  text-align:center;
+  background:linear-gradient(145deg,#10283d,#071321);
 }
 
-@keyframes entrada {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+.documento:hover{
+  border-color:var(--gold);
+  box-shadow:0 0 20px rgba(229,189,101,.12);
 }
 
-.panel-cabecera {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid rgba(0,234,255,.3);
-  padding-bottom: 14px;
-  margin-bottom: 17px;
+.documento h3{
+  color:var(--gold);
+  font-size:14px;
+  letter-spacing:1px;
+  margin-bottom:15px;
 }
 
-.panel h2 {
-  color: var(--gold);
-  font-size: 20px;
-  letter-spacing: 2px;
+.nombre-archivo{
+  color:#a9bfce;
+  font-size:11px;
+  margin-top:12px;
+  overflow-wrap:anywhere;
 }
 
-.codigo {
-  color: var(--cyan);
-  font-size: 9px;
-  letter-spacing: 2px;
+/* GIF */
+
+.vista-gif{
+  width:100%;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#02070d;
+  border:1px solid var(--cyan);
+  border-radius:5px;
+  box-shadow:0 0 20px rgba(0,234,255,.15);
 }
 
-.descripcion {
-  color: #a9bfce;
-  font-size: 11px;
-  line-height: 1.7;
-  margin-bottom: 19px;
+.vista-gif img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:600px;
+  object-fit:contain;
 }
 
-.documentos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 16px;
+.error-archivo{
+  display:none;
+  padding:25px;
+  color:#ffbd58;
+  font-size:12px;
+  line-height:1.7;
 }
 
-.documento {
-  min-width: 0;
-  border: 1px solid rgba(0,234,255,.28);
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-  background: linear-gradient(145deg,#10283d,#071321);
-  transition: .25s;
+/* PNG */
+
+.vista{
+  display:flex;
+  min-height:190px;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#02070d;
+  border:1px solid #29445a;
+  border-radius:5px;
 }
 
-.documento:hover {
-  border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(229,189,101,.12);
+.vista img{
+  display:block;
+  width:100%;
+  max-height:600px;
+  object-fit:contain;
 }
 
-.documento h3 {
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 1px;
-  margin-bottom: 13px;
+/* PDF */
+
+.visor-pdf-contenedor{
+  width:100%;
+  height:750px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--cyan);
+  border-radius:5px;
 }
 
-.vista {
-  display: flex;
-  min-height: 190px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #02070d;
-  border: 1px solid #29445a;
-  border-radius: 5px;
+.visor-pdf{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  background:#fff;
 }
 
-.vista img {
-  display: block;
-  width: 100%;
-  max-height: 350px;
-  object-fit: contain;
+.abrir{
+  display:block;
+  width:100%;
+  margin-top:13px;
+  padding:13px 8px;
+  border:1px solid var(--cyan);
+  border-radius:4px;
+  color:var(--cyan);
+  background:rgba(0,234,255,.06);
+  text-decoration:none;
+  font-weight:bold;
+  font-size:11px;
+  letter-spacing:2px;
+  transition:.2s;
 }
 
-/* VISOR DEL GIF ES74 */
-.vista-gif {
-  width: 100%;
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #02070d;
-  border: 1px solid var(--cyan);
-  border-radius: 5px;
-  box-shadow: 0 0 18px rgba(0,234,255,.12);
+.abrir:hover{
+  background:var(--cyan);
+  color:#00101b;
 }
 
-.vista-gif img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 480px;
-  object-fit: contain;
+/* ES274 */
+
+.documentos-es274{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
 }
 
-.vista-pdf {
-  display: block;
-  width: 100%;
-  height: 650px;
-  border: 0;
-  background: #fff;
+.video-investigacion{
+  width:100%;
+  display:block;
+  background:#000;
+  border:1px solid #29445a;
+  border-radius:5px;
 }
 
-.nombre-archivo {
-  color: #a9bfce;
-  font-size: 10px;
-  margin-top: 12px;
-  overflow-wrap: anywhere;
+.boton{
+  display:inline-block;
+  margin:20px 8px 0 0;
+  padding:12px 16px;
+  border:1px solid var(--gold);
+  border-radius:4px;
+  background:rgba(229,189,101,.06);
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:bold;
+  font-size:10px;
+  letter-spacing:1px;
+  cursor:pointer;
 }
 
-.abrir {
-  display: block;
-  width: 100%;
-  margin-top: 13px;
-  padding: 12px 8px;
-  border: 1px solid var(--cyan);
-  border-radius: 4px;
-  color: var(--cyan);
-  background: rgba(0,234,255,.06);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 10px;
-  letter-spacing: 2px;
-  transition: .2s;
+.boton:hover{
+  background:var(--gold);
+  color:#050b12;
 }
 
-.abrir:hover {
-  background: var(--cyan);
-  color: #00101b;
-  box-shadow: 0 0 17px rgba(0,234,255,.4);
+.navegacion{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:28px;
 }
 
-.video-investigacion {
-  width: 100%;
-  display: block;
-  background: #000;
-  border: 1px solid #29445a;
-  border-radius: 5px;
+footer{
+  padding:25px 10px;
+  text-align:center;
+  border-top:1px solid rgba(0,234,255,.2);
+  color:#668397;
+  font-size:9px;
+  letter-spacing:2px;
 }
 
-.boton {
-  display: inline-block;
-  margin: 20px 8px 0 0;
-  padding: 12px 16px;
-  border: 1px solid var(--gold);
-  border-radius: 4px;
-  background: rgba(229,189,101,.06);
-  color: var(--gold);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 10px;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
+footer strong{color:var(--gold)}
 
-.boton:hover {
-  background: var(--gold);
-  color: #050b12;
-}
-
-.navegacion {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 28px;
-}
-
-footer {
-  padding: 25px 10px;
-  text-align: center;
-  border-top: 1px solid rgba(0,234,255,.2);
-  color: #668397;
-  font-size: 9px;
-  letter-spacing: 2px;
-}
-
-footer strong {
-  color: var(--gold);
-}
-
-@media(max-width:480px) {
-  header { padding-top: 24px; }
-
-  .contenedor {
-    padding: 20px 12px 35px;
-  }
-
-  .carpetas {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .carpeta {
-    min-height: 155px;
-    padding: 13px 7px;
-  }
-
-  .icono { font-size: 35px; }
-
-  .panel { padding: 13px; }
-
-  .documentos {
-    grid-template-columns: 1fr;
-  }
-
-  .vista-pdf {
-    height: 550px;
-  }
+@media(max-width:480px){
+  header{padding-top:24px}
+  .contenedor{padding:20px 12px 35px}
+  .carpetas{grid-template-columns:1fr 1fr;gap:10px}
+  .carpeta{min-height:155px;padding:13px 7px}
+  .icono{font-size:35px}
+  .panel{padding:13px}
+  .visor-pdf-contenedor{height:650px}
 }
 </style>
 </head>
@@ -526,48 +503,58 @@ footer strong {
 
     <p class="descripcion">
       ARCHIVO TÉCNICO ES74 · DOCUMENTACIÓN DE INVESTIGACIÓN.
-      Los documentos se cargan directamente desde la raíz
-      del repositorio PROYECTO-HYPERSONIC.
+      Animación, imagen gráfica y dossier técnico del modelo.
     </p>
 
-    <div class="documentos">
+    <div class="documentos-es74">
 
-      <!-- GIF ANIMADO ES74 -->
+      <!-- 1. GIF AUTOMÁTICO -->
 
       <article class="documento">
 
-        <h3>REGISTRO ANIMADO · DESPEGUE VERTICAL ES74</h3>
+        <h3>01 · DESPEGUE VERTICAL ES74</h3>
 
         <div class="vista-gif">
+
           <img
+            id="gif-es74"
             src="./es741.gif"
-            alt="ES74 realizando un despegue vertical sobre montañas áridas"
-            loading="eager">
+            alt="Animación del avión ES74 despegando verticalmente"
+            onerror="this.style.display='none';document.getElementById('error-gif').style.display='block';">
+
+          <div id="error-gif" class="error-archivo">
+            NO SE HA PODIDO CARGAR es741.gif.
+            Comprueba que el archivo está en la raíz del repositorio
+            y que su nombre es exactamente es741.gif.
+          </div>
+
         </div>
 
         <div class="nombre-archivo">
-          es741.gif · REPRODUCCIÓN AUTOMÁTICA EN BUCLE
+          es741.gif · REPRODUCCIÓN AUTOMÁTICA Y REPETICIÓN CONTINUA
         </div>
 
       </article>
 
-      <!-- IMAGEN PNG -->
+      <!-- 2. PNG -->
 
       <article class="documento">
 
-        <h3>DOCUMENTO GRÁFICO</h3>
+        <h3>02 · DOCUMENTO GRÁFICO ES74</h3>
 
         <div class="vista">
+
           <img
-            src="./inv.es741.png"
-            alt="Investigación gráfica del modelo ES74"
-            onerror="this.parentElement.innerHTML='<span style=color:#ffbd58;padding:15px;font-size:12px>NO SE HA PODIDO CARGAR inv.es741.png</span>'">
+            src="./inv.741.png"
+            alt="Documento gráfico del modelo ES74"
+            onerror="this.parentElement.innerHTML='<span style=color:#ffbd58;padding:20px>NO SE ENCUENTRA inv.741.png</span>'">
+
         </div>
 
-        <div class="nombre-archivo">inv.es741.png</div>
+        <div class="nombre-archivo">inv.741.png</div>
 
         <a class="abrir"
-           href="./inv.es741.png"
+           href="./inv.741.png"
            target="_blank"
            rel="noopener">
           ABRIR IMAGEN PNG
@@ -575,27 +562,34 @@ footer strong {
 
       </article>
 
-      <!-- LECTOR PDF INTEGRADO -->
+      <!-- 3. PDF -->
 
       <article class="documento">
 
-        <h3>DOSSIER TÉCNICO PDF</h3>
+        <h3>03 · DOSSIER TÉCNICO ES74</h3>
 
-        <div class="vista" style="display:block;">
+        <div class="visor-pdf-contenedor">
 
           <iframe
-            class="vista-pdf"
+            class="visor-pdf"
             id="visor-pdf"
-            src="./inv.es741.pdf#toolbar=0&navpanes=0&scrollbar=1&view=FitH"
-            title="Dossier técnico PDF del modelo ES74"
+            title="Lectura integrada del dossier técnico ES74"
+            src="https://docs.google.com/gview?embedded=1&url=https%3A%2F%2Frafadun18-gif.github.io%2FPROYECTO-HYPERSONIC%2Finv.741.pdf"
             loading="eager">
           </iframe>
 
         </div>
 
         <div class="nombre-archivo">
-          inv.es741.pdf · LECTOR INTEGRADO
+          inv.741.pdf · LECTOR INTEGRADO
         </div>
+
+        <a class="abrir"
+           href="./inv.741.pdf"
+           target="_blank"
+           rel="noopener">
+          ABRIR DOCUMENTO PDF
+        </a>
 
       </article>
 
@@ -622,7 +616,7 @@ footer strong {
       el repositorio principal.
     </p>
 
-    <div class="documentos">
+    <div class="documentos-es274">
 
       <article class="documento">
 
@@ -716,41 +710,49 @@ footer strong {
 </footer>
 
 <script>
-function abrirModelo(modelo) {
+function abrirModelo(modelo){
 
-  document.getElementById("inicio").style.display = "none";
+  document.getElementById("inicio").style.display="none";
 
-  document.querySelectorAll(".panel").forEach(panel => {
+  document.querySelectorAll(".panel").forEach(panel=>{
     panel.classList.remove("activo");
   });
 
-  const seleccionado = document.getElementById(modelo);
+  const seleccionado=document.getElementById(modelo);
 
-  if (seleccionado) {
+  if(seleccionado){
     seleccionado.classList.add("activo");
   }
 
+  if(modelo==="ES74"){
+    const gif=document.getElementById("gif-es74");
+
+    if(gif){
+      gif.src="./es741.gif?actualizacion=1";
+    }
+  }
+
   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    top:0,
+    behavior:"smooth"
   });
 }
 
-function volverCarpetas() {
+function volverCarpetas(){
 
-  document.querySelectorAll(".panel").forEach(panel => {
+  document.querySelectorAll(".panel").forEach(panel=>{
     panel.classList.remove("activo");
   });
 
-  document.getElementById("inicio").style.display = "block";
+  document.getElementById("inicio").style.display="block";
 
-  document.querySelectorAll("video").forEach(video => {
+  document.querySelectorAll("video").forEach(video=>{
     video.pause();
   });
 
   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    top:0,
+    behavior:"smooth"
   });
 }
 </script>
