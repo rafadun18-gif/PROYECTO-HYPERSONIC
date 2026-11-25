@@ -49,10 +49,7 @@ body:after{
  pointer-events:none;
  z-index:0;
  background:repeating-linear-gradient(
- to bottom,
- transparent 0px,
- transparent 4px,
- rgba(0,0,0,.12) 5px
+ to bottom,transparent 0px,transparent 4px,rgba(0,0,0,.12) 5px
  );
 }
 
@@ -96,9 +93,7 @@ header{
 }
 
 .punto{
- width:7px;
- height:7px;
- border-radius:50%;
+ width:7px;height:7px;border-radius:50%;
  background:#00ff9d;
  box-shadow:0 0 10px #00ff9d;
  animation:parpadeo 1.5s infinite;
@@ -107,19 +102,15 @@ header{
 @keyframes parpadeo{50%{opacity:.3}}
 
 .contenedor{
- width:100%;
- max-width:1150px;
- margin:auto;
- padding:25px 17px 45px;
+ width:100%;max-width:1150px;
+ margin:auto;padding:25px 17px 45px;
 }
 
 .ruta{
  color:var(--cyan);
- font-size:10px;
- letter-spacing:2px;
+ font-size:10px;letter-spacing:2px;
  margin-bottom:23px;
 }
-
 .ruta span{color:var(--gold)}
 
 .titulo{
@@ -131,15 +122,12 @@ header{
 
 .intro{
  color:var(--muted);
- font-size:12px;
- line-height:1.7;
- margin-bottom:25px;
- max-width:680px;
+ font-size:12px;line-height:1.7;
+ margin-bottom:25px;max-width:680px;
 }
 
 .linea{
- width:100%;
- height:1px;
+ width:100%;height:1px;
  background:linear-gradient(90deg,var(--cyan),transparent);
  margin:15px 0 23px;
 }
@@ -158,72 +146,50 @@ header{
  border:1px solid rgba(0,234,255,.35);
  border-radius:8px;
  background:linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
- color:white;
- cursor:pointer;
- text-align:center;
+ color:white;cursor:pointer;text-align:center;
  transition:.3s;
  box-shadow:inset 0 0 25px rgba(0,160,255,.04);
 }
 
 .carpeta:before{
- content:"";
- position:absolute;
- top:0;
- left:-100%;
- width:100%;
- height:2px;
+ content:"";position:absolute;top:0;left:-100%;
+ width:100%;height:2px;
  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
  transition:.5s;
 }
 
 .carpeta:hover:before{left:100%}
-
 .carpeta:hover{
  transform:translateY(-5px);
  border-color:var(--cyan);
  box-shadow:0 0 22px rgba(0,234,255,.18);
 }
-
 .carpeta:active{transform:scale(.97)}
 
 .numero{
- position:absolute;
- top:9px;
- right:11px;
- font-size:9px;
- color:var(--gold);
- letter-spacing:1px;
+ position:absolute;top:9px;right:11px;
+ font-size:9px;color:var(--gold);letter-spacing:1px;
 }
 
 .icono{
- display:block;
- font-size:43px;
- margin:15px 0;
+ display:block;font-size:43px;margin:15px 0;
  filter:drop-shadow(0 0 9px rgba(0,234,255,.45));
 }
 
 .carpeta strong{
- display:block;
- color:var(--cyan);
- font-size:19px;
- letter-spacing:2px;
+ display:block;color:var(--cyan);
+ font-size:19px;letter-spacing:2px;
 }
 
 .carpeta small{
- display:block;
- color:#91aabd;
- font-size:9px;
- margin-top:10px;
- letter-spacing:1px;
+ display:block;color:#91aabd;
+ font-size:9px;margin-top:10px;letter-spacing:1px;
 }
 
 .panel{
- display:none;
- margin-top:20px;
- padding:20px;
+ display:none;margin-top:20px;padding:20px;
  border:1px solid rgba(0,234,255,.45);
- border-radius:9px;
- background:var(--panel);
+ border-radius:9px;background:var(--panel);
  box-shadow:0 0 35px rgba(0,140,255,.09);
  animation:entrada .35s ease;
 }
@@ -236,33 +202,23 @@ header{
 }
 
 .panel-cabecera{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- flex-wrap:wrap;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px;flex-wrap:wrap;
  border-bottom:1px solid rgba(0,234,255,.3);
- padding-bottom:14px;
- margin-bottom:17px;
+ padding-bottom:14px;margin-bottom:17px;
 }
 
 .panel h2{
- color:var(--gold);
- font-size:20px;
- letter-spacing:2px;
+ color:var(--gold);font-size:20px;letter-spacing:2px;
 }
 
 .codigo{
- color:var(--cyan);
- font-size:9px;
- letter-spacing:2px;
+ color:var(--cyan);font-size:9px;letter-spacing:2px;
 }
 
 .descripcion{
- color:#a9bfce;
- font-size:11px;
- line-height:1.7;
- margin-bottom:19px;
+ color:#a9bfce;font-size:11px;
+ line-height:1.7;margin-bottom:19px;
 }
 
 .documentos{
@@ -274,8 +230,7 @@ header{
 .documento{
  min-width:0;
  border:1px solid rgba(0,234,255,.28);
- border-radius:8px;
- padding:15px;
+ border-radius:8px;padding:15px;
  text-align:center;
  background:linear-gradient(145deg,#10283d,#071321);
  transition:.25s;
@@ -287,109 +242,136 @@ header{
 }
 
 .documento h3{
- color:var(--gold);
- font-size:12px;
- letter-spacing:1px;
- margin-bottom:13px;
+ color:var(--gold);font-size:12px;
+ letter-spacing:1px;margin-bottom:13px;
 }
 
 .vista{
- display:flex;
- min-height:190px;
- align-items:center;
- justify-content:center;
- overflow:hidden;
- background:#02070d;
- border:1px solid #29445a;
- border-radius:5px;
+ display:flex;min-height:190px;
+ align-items:center;justify-content:center;
+ overflow:hidden;background:#02070d;
+ border:1px solid #29445a;border-radius:5px;
 }
 
 .vista img{
- display:block;
- width:100%;
- max-height:350px;
- object-fit:contain;
-}
-
-.vista-pdf{
- display:block;
- width:100%;
- height:650px;
- border:0;
- background:#fff;
+ display:block;width:100%;
+ max-height:350px;object-fit:contain;
 }
 
 .nombre-archivo{
- color:#a9bfce;
- font-size:10px;
- margin-top:12px;
- overflow-wrap:anywhere;
+ color:#a9bfce;font-size:10px;
+ margin-top:12px;overflow-wrap:anywhere;
 }
 
 .abrir{
- display:block;
- width:100%;
- margin-top:13px;
+ display:block;width:100%;margin-top:13px;
  padding:12px 8px;
- border:1px solid var(--cyan);
- border-radius:4px;
- color:var(--cyan);
- background:rgba(0,234,255,.06);
- text-decoration:none;
- font-weight:bold;
- font-size:10px;
- letter-spacing:2px;
- transition:.2s;
+ border:1px solid var(--cyan);border-radius:4px;
+ color:var(--cyan);background:rgba(0,234,255,.06);
+ text-decoration:none;font-weight:bold;
+ font-size:10px;letter-spacing:2px;transition:.2s;
 }
 
 .abrir:hover{
- background:var(--cyan);
- color:#00101b;
+ background:var(--cyan);color:#00101b;
  box-shadow:0 0 17px rgba(0,234,255,.4);
 }
 
-.video-investigacion{
+/* VISOR PDF.JS */
+
+.pdf-contenedor{
  width:100%;
- display:block;
- background:#000;
+ margin-top:5px;
+ background:#101923;
  border:1px solid #29445a;
+ border-radius:5px;
+ overflow:hidden;
+}
+
+.pdf-controles{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:9px;
+ padding:12px 6px;
+ background:#071321;
+ border-bottom:1px solid rgba(0,234,255,.35);
+}
+
+.pdf-controles button{
+ padding:9px 13px;
+ background:#102d43;
+ color:var(--cyan);
+ border:1px solid var(--cyan);
+ border-radius:4px;
+ font-size:11px;
+ cursor:pointer;
+}
+
+.pdf-controles button:disabled{
+ opacity:.35;
+ cursor:not-allowed;
+}
+
+#pagina-info{
+ color:white;
+ font-size:11px;
+ letter-spacing:1px;
+}
+
+#pdf-estado{
+ padding:12px;
+ text-align:center;
+ color:var(--cyan);
+ font-size:11px;
+ line-height:1.6;
+}
+
+.pdf-hoja{
+ display:flex;
+ justify-content:center;
+ align-items:flex-start;
+ padding:12px 5px;
+ min-height:200px;
+ background:#263442;
+ overflow:auto;
+}
+
+#pdf-canvas{
+ display:block;
+ max-width:100%;
+ height:auto;
+ background:white;
+ box-shadow:0 3px 15px #000;
+}
+
+.video-investigacion{
+ width:100%;display:block;
+ background:#000;border:1px solid #29445a;
  border-radius:5px;
 }
 
 .boton{
- display:inline-block;
- margin:20px 8px 0 0;
+ display:inline-block;margin:20px 8px 0 0;
  padding:12px 16px;
- border:1px solid var(--gold);
- border-radius:4px;
+ border:1px solid var(--gold);border-radius:4px;
  background:rgba(229,189,101,.06);
- color:var(--gold);
- text-decoration:none;
- font-weight:bold;
- font-size:10px;
- letter-spacing:1px;
+ color:var(--gold);text-decoration:none;
+ font-weight:bold;font-size:10px;letter-spacing:1px;
  cursor:pointer;
 }
 
-.boton:hover{
- background:var(--gold);
- color:#050b12;
-}
+.boton:hover{background:var(--gold);color:#050b12}
 
 .navegacion{
- display:flex;
- flex-wrap:wrap;
- gap:9px;
- margin-top:28px;
+ display:flex;flex-wrap:wrap;gap:9px;margin-top:28px;
 }
 
 footer{
- padding:25px 10px;
- text-align:center;
+ padding:25px 10px;text-align:center;
  border-top:1px solid rgba(0,234,255,.2);
- color:#668397;
- font-size:9px;
- letter-spacing:2px;
+ color:#668397;font-size:9px;letter-spacing:2px;
 }
 
 footer strong{color:var(--gold)}
@@ -402,7 +384,9 @@ footer strong{color:var(--gold)}
  .icono{font-size:35px}
  .panel{padding:13px}
  .documentos{grid-template-columns:1fr}
- .vista-pdf{height:600px}
+ .pdf-hoja{padding:8px 2px}
+ .pdf-controles{gap:5px}
+ .pdf-controles button{padding:8px}
 }
 </style>
 </head>
@@ -434,8 +418,6 @@ footer strong{color:var(--gold)}
   </p>
 
   <div class="linea"></div>
-
-  <!-- SOLAMENTE DOS MODELOS -->
 
   <div class="carpetas">
 
@@ -469,57 +451,71 @@ footer strong{color:var(--gold)}
 
   <p class="descripcion">
    ARCHIVO TÉCNICO ES74 · DOCUMENTACIÓN DE INVESTIGACIÓN.
-   Los documentos se cargan desde la raíz del repositorio.
+   Documentos cargados desde la raíz del repositorio.
   </p>
 
   <div class="documentos">
-
-   <!-- IMAGEN PNG CORREGIDA -->
 
    <article class="documento">
     <h3>DOCUMENTO GRÁFICO</h3>
 
     <div class="vista">
      <img
-      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.741.png"
-      alt="Investigación gráfica del modelo ES74"
-      onerror="this.parentElement.innerHTML='<span style=color:#ffbd58;padding:15px;font-size:12px>NO SE HA PODIDO CARGAR inv.741.png. COMPRUEBA EL NOMBRE DEL ARCHIVO.</span>'">
+      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.png"
+      alt="Investigación gráfica ES74"
+      onerror="this.parentElement.innerHTML='<span style=color:#ffbd58;padding:15px;font-size:12px>NO SE HA PODIDO CARGAR inv.es741.png</span>'">
     </div>
 
-    <div class="nombre-archivo">inv.741.png</div>
+    <div class="nombre-archivo">inv.es741.png</div>
 
     <a class="abrir"
-       href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.741.png"
-       target="_blank"
-       rel="noopener">
-       ABRIR IMAGEN PNG
+     href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.es741.png"
+     target="_blank" rel="noopener">
+     ABRIR IMAGEN PNG
     </a>
    </article>
 
-   <!-- PDF CORREGIDO: LECTURA INTEGRADA -->
+   <!-- PDF: LECTURA MEDIANTE PDF.JS -->
 
-   <article class="documento">
+   <article class="documento" style="grid-column:1/-1">
     <h3>DOSSIER TÉCNICO PDF · ES74</h3>
 
-    <div class="vista">
-     <iframe
-      class="vista-pdf"
-      src="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.741.pdf#toolbar=0&navpanes=0&scrollbar=1"
-      title="Lectura del dossier técnico ES74"
-      loading="lazy">
-     </iframe>
+    <div class="pdf-contenedor">
+
+     <div id="pdf-estado">
+      PREPARANDO VISUALIZACIÓN DEL DOCUMENTO...
+     </div>
+
+     <div class="pdf-controles">
+      <button id="pdf-anterior" type="button" disabled>
+       ◀ ANTERIOR
+      </button>
+
+      <span id="pagina-info">PÁGINA -- / --</span>
+
+      <button id="pdf-siguiente" type="button" disabled>
+       SIGUIENTE ▶
+      </button>
+
+      <button id="pdf-menos" type="button">
+       −
+      </button>
+
+      <button id="pdf-mas" type="button">
+       +
+      </button>
+     </div>
+
+     <div class="pdf-hoja">
+      <canvas id="pdf-canvas"></canvas>
+     </div>
+
     </div>
 
     <div class="nombre-archivo">
-     inv.741.pdf · VISUALIZACIÓN DEL DOCUMENTO · SOLO LECTURA
+     inv.es741.pdf · LECTOR INTEGRADO · SOLO LECTURA
     </div>
 
-    <a class="abrir"
-       href="https://rafadun18-gif.github.io/PROYECTO-HYPERSONIC/inv.741.pdf"
-       target="_blank"
-       rel="noopener">
-       ABRIR PDF
-    </a>
    </article>
 
   </div>
@@ -557,9 +553,7 @@ footer strong{color:var(--gold)}
     </video>
     <div class="nombre-archivo">ES2741.mp4</div>
     <a class="abrir" href="./ES2741.mp4"
-     target="_blank" rel="noopener">
-     ABRIR VÍDEO
-    </a>
+     target="_blank" rel="noopener">ABRIR VÍDEO</a>
    </article>
 
    <article class="documento">
@@ -571,9 +565,7 @@ footer strong{color:var(--gold)}
     </video>
     <div class="nombre-archivo">ES2742.mp4</div>
     <a class="abrir" href="./ES2742.mp4"
-     target="_blank" rel="noopener">
-     ABRIR VÍDEO
-    </a>
+     target="_blank" rel="noopener">ABRIR VÍDEO</a>
    </article>
 
    <article class="documento">
@@ -585,9 +577,7 @@ footer strong{color:var(--gold)}
     </video>
     <div class="nombre-archivo">ES2743.mp4</div>
     <a class="abrir" href="./ES2743.mp4"
-     target="_blank" rel="noopener">
-     ABRIR VÍDEO
-    </a>
+     target="_blank" rel="noopener">ABRIR VÍDEO</a>
    </article>
 
   </div>
@@ -616,7 +606,158 @@ footer strong{color:var(--gold)}
  ES74 · ES274 · CENTRO DE INVESTIGACIÓN
 </footer>
 
+<!-- MOTOR DE LECTURA PDF.JS -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
 <script>
+const PDF_URL =
+"https://raw.githubusercontent.com/rafadun18-gif/PROYECTO-HYPERSONIC/main/inv.es741.pdf";
+
+let pdfDocumento = null;
+let paginaActual = 1;
+let escalaPDF = 1.15;
+let tareaRender = null;
+
+const canvas = document.getElementById("pdf-canvas");
+const contexto = canvas.getContext("2d");
+
+const estado = document.getElementById("pdf-estado");
+const informacion = document.getElementById("pagina-info");
+
+const anterior = document.getElementById("pdf-anterior");
+const siguiente = document.getElementById("pdf-siguiente");
+const mas = document.getElementById("pdf-mas");
+const menos = document.getElementById("pdf-menos");
+
+function mostrarError(mensaje){
+ estado.style.display="block";
+ estado.style.color="#ffbd58";
+ estado.textContent=mensaje;
+}
+
+async function cargarPDF(){
+
+ if(typeof pdfjsLib === "undefined"){
+  mostrarError("NO SE HA PODIDO CARGAR EL MOTOR PDF.JS. COMPRUEBA LA CONEXIÓN.");
+  return;
+ }
+
+ pdfjsLib.GlobalWorkerOptions.workerSrc =
+ "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+ try{
+
+  estado.textContent="CONECTANDO CON EL EXPEDIENTE ES74...";
+
+  const documento = await pdfjsLib.getDocument({
+   url:PDF_URL,
+   withCredentials:false
+  }).promise;
+
+  pdfDocumento=documento;
+
+  estado.style.display="none";
+
+  anterior.disabled=false;
+  siguiente.disabled=false;
+
+  await mostrarPagina(1);
+
+ }catch(error){
+
+  console.error("Error PDF:",error);
+
+  mostrarError(
+   "NO SE HA PODIDO LEER EL PDF. COMPRUEBA QUE inv.es741.pdf ESTÉ PUBLICADO EN LA RAÍZ DEL REPOSITORIO Y QUE SEA ACCESIBLE."
+  );
+ }
+}
+
+async function mostrarPagina(numero){
+
+ if(!pdfDocumento) return;
+
+ if(numero<1 || numero>pdfDocumento.numPages) return;
+
+ paginaActual=numero;
+
+ if(tareaRender){
+  try{tareaRender.cancel()}catch(e){}
+ }
+
+ try{
+
+  const pagina=await pdfDocumento.getPage(numero);
+
+  const vistaBase=pagina.getViewport({scale:1});
+
+  const anchoDisponible=Math.max(
+   240,
+   document.querySelector(".pdf-hoja").clientWidth-15
+  );
+
+  const escalaAjustada=Math.min(
+   escalaPDF,
+   anchoDisponible/vistaBase.width
+  );
+
+  const vista=pagina.getViewport({
+   scale:escalaAjustada
+  });
+
+  const resolucion=window.devicePixelRatio || 1;
+
+  canvas.width=Math.floor(vista.width*resolucion);
+  canvas.height=Math.floor(vista.height*resolucion);
+
+  canvas.style.width=Math.floor(vista.width)+"px";
+  canvas.style.height=Math.floor(vista.height)+"px";
+
+  contexto.setTransform(
+   resolucion,0,0,resolucion,0,0
+  );
+
+  tareaRender=pagina.render({
+   canvasContext:contexto,
+   viewport:vista
+  });
+
+  await tareaRender.promise;
+
+  informacion.textContent=
+   "PÁGINA "+paginaActual+" / "+pdfDocumento.numPages;
+
+  anterior.disabled=paginaActual<=1;
+  siguiente.disabled=paginaActual>=pdfDocumento.numPages;
+
+ }catch(error){
+
+  if(error.name!=="RenderingCancelledException"){
+   console.error(error);
+   mostrarError("ERROR AL MOSTRAR ESTA PÁGINA DEL DOCUMENTO.");
+  }
+ }
+}
+
+anterior.addEventListener("click",()=>{
+ mostrarPagina(paginaActual-1);
+});
+
+siguiente.addEventListener("click",()=>{
+ mostrarPagina(paginaActual+1);
+});
+
+mas.addEventListener("click",()=>{
+ escalaPDF=Math.min(escalaPDF+0.2,3);
+ mostrarPagina(paginaActual);
+});
+
+menos.addEventListener("click",()=>{
+ escalaPDF=Math.max(escalaPDF-0.2,0.6);
+ mostrarPagina(paginaActual);
+});
+
 function abrirModelo(modelo){
 
  document.getElementById("inicio").style.display="none";
@@ -631,10 +772,11 @@ function abrirModelo(modelo){
   seleccionado.classList.add("activo");
  }
 
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
+ window.scrollTo({top:0,behavior:"smooth"});
+
+ if(modelo==="ES74" && !pdfDocumento){
+  cargarPDF();
+ }
 }
 
 function volverCarpetas(){
@@ -645,11 +787,14 @@ function volverCarpetas(){
 
  document.getElementById("inicio").style.display="block";
 
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
+ window.scrollTo({top:0,behavior:"smooth"});
 }
+
+window.addEventListener("resize",()=>{
+ if(pdfDocumento && document.getElementById("ES74").classList.contains("activo")){
+  mostrarPagina(paginaActual);
+ }
+});
 </script>
 
 </body>
