@@ -4,442 +4,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#030914">
-<title>HYPERSONIC ALLIANCE | RESEARCH CENTER</title>
+<meta name="theme-color" content="#050a12">
+<title>Centro de Investigación | Hypersonic Alliance</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
-  --cyan:#00eaff;
-  --gold:#e5bd65;
-  --white:#eaf8ff;
-  --muted:#8ca9bd;
-  --panel:rgba(5,19,35,.97);
+:root {
+  --fondo: #050a12;
+  --panel: #0b1726;
+  --cian: #35e7ff;
+  --verde: #8cff00;
+  --borde: #24445a;
+  --blanco: #f4f8ff;
 }
 
-body{
-  min-height:100vh;
-  overflow-x:hidden;
-  color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-  background:
-    radial-gradient(ellipse at 50% -20%,#12365a 0%,transparent 55%),
-    radial-gradient(ellipse at 90% 80%,#071e36 0%,transparent 45%),
-    linear-gradient(145deg,#02050b,#061321 55%,#02050a);
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #102b49 0, #050a12 65%);
+  color: var(--blanco);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:.22;
-  background-image:
-    linear-gradient(rgba(0,234,255,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,234,255,.12) 1px,transparent 1px);
-  background-size:42px 42px;
+header {
+  text-align: center;
+  padding: 25px 15px;
+  border-bottom: 1px solid var(--borde);
 }
 
-body:after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  background:repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 4px,
-    rgba(0,0,0,.12) 5px
-  );
+.kicker {
+  color: var(--verde);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
-header,main,footer{position:relative;z-index:1}
-
-header{
-  text-align:center;
-  padding:30px 12px 24px;
-  border-bottom:1px solid rgba(0,234,255,.4);
-  background:linear-gradient(180deg,rgba(4,17,31,.96),rgba(4,17,31,.45));
-  box-shadow:0 8px 35px rgba(0,180,255,.08);
+h1 {
+  color: var(--cian);
+  font-size: clamp(25px, 5vw, 42px);
+  margin: 10px 0;
 }
 
-.logo{
-  color:var(--gold);
-  font-size:clamp(23px,5vw,39px);
-  font-weight:900;
-  letter-spacing:4px;
-  text-shadow:0 0 15px rgba(229,189,101,.4);
+.subtitulo {
+  color: #c5d8e8;
+  font-size: 14px;
 }
 
-.sublogo{
-  color:var(--cyan);
-  font-size:10px;
-  letter-spacing:4px;
-  margin-top:10px;
+main {
+  width: min(1050px, calc(100% - 24px));
+  margin: 22px auto 45px;
 }
 
-.estado{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:17px;
-  padding:7px 13px;
-  border:1px solid rgba(0,234,255,.35);
-  border-radius:30px;
-  background:rgba(0,234,255,.06);
-  color:#a8f8ff;
-  font-size:9px;
-  letter-spacing:2px;
+button {
+  border: 1px solid var(--cian);
+  background: #071b2b;
+  color: white;
+  padding: 12px 17px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
 }
 
-.punto{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#00ff9d;
-  box-shadow:0 0 10px #00ff9d;
-  animation:parpadeo 1.5s infinite;
+button:active { background: #123b50; }
+
+.volver {
+  border-color: var(--verde);
+  color: var(--verde);
+  margin-bottom: 20px;
 }
 
-@keyframes parpadeo{50%{opacity:.3}}
-
-.contenedor{
-  width:100%;
-  max-width:1150px;
-  margin:auto;
-  padding:25px 17px 45px;
+.modelos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 25px;
 }
 
-.ruta{
-  color:var(--cyan);
-  font-size:10px;
-  letter-spacing:2px;
-  margin-bottom:23px;
+.modelo {
+  border: 1px solid var(--borde);
+  border-radius: 13px;
+  background: linear-gradient(145deg, #10243a, #07111e);
+  padding: 22px 15px;
+  text-align: center;
 }
 
-.ruta span{color:var(--gold)}
-
-.titulo{
-  color:white;
-  font-size:clamp(19px,4vw,27px);
-  letter-spacing:2px;
-  margin-bottom:8px;
+.modelo h2 {
+  color: var(--cian);
+  margin-top: 5px;
 }
 
-.intro{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.7;
-  margin-bottom:25px;
-  max-width:680px;
+.modelo p {
+  color: #b8cbdc;
+  font-size: 13px;
 }
 
-.linea{
-  width:100%;
-  height:1px;
-  background:linear-gradient(90deg,var(--cyan),transparent);
-  margin:15px 0 23px;
+.abrir {
+  background: #102b3e;
+  color: var(--verde);
+  border-color: var(--verde);
+  width: 100%;
+  margin-top: 12px;
 }
 
-.carpetas{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
+.panel-modelo {
+  display: none;
+  margin-top: 22px;
+  padding: 18px;
+  background: #081421;
+  border: 1px solid var(--borde);
+  border-radius: 13px;
 }
 
-.carpeta{
-  position:relative;
-  min-height:190px;
-  padding:20px 12px;
-  overflow:hidden;
-  border:1px solid rgba(0,234,255,.35);
-  border-radius:8px;
-  background:linear-gradient(145deg,rgba(15,48,72,.88),rgba(3,12,24,.96));
-  color:white;
-  cursor:pointer;
-  text-align:center;
-  transition:.3s;
-  box-shadow:inset 0 0 25px rgba(0,160,255,.04);
+.panel-modelo.activo { display: block; }
+
+.panel-modelo h2 { color: var(--cian); }
+
+.imagen-investigacion {
+  display: block;
+  width: 100%;
+  max-width: 850px;
+  max-height: 650px;
+  object-fit: contain;
+  margin: 15px auto;
+  background: #000;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
 }
 
-.carpeta:hover{
-  transform:translateY(-5px);
-  border-color:var(--cyan);
-  box-shadow:0 0 22px rgba(0,234,255,.18);
+.documento {
+  margin-top: 25px;
+  padding: 15px;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: #050d17;
 }
 
-.numero{
-  position:absolute;
-  top:9px;
-  right:11px;
-  font-size:9px;
-  color:var(--gold);
-  letter-spacing:1px;
+.documento h3 { color: var(--verde); }
+
+.pdf-contenedor {
+  width: 100%;
+  margin-top: 15px;
+  background: #111;
+  border: 1px solid #34536b;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.icono{
-  display:block;
-  font-size:43px;
-  margin:15px 0;
+.pdf-barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px;
+  background: #102033;
 }
 
-.carpeta strong{
-  display:block;
-  color:var(--cyan);
-  font-size:19px;
-  letter-spacing:2px;
+.pdf-barra button {
+  margin: 0;
+  padding: 9px 12px;
 }
 
-.carpeta small{
-  display:block;
-  color:#91aabd;
-  font-size:9px;
-  margin-top:10px;
-  letter-spacing:1px;
+#pagina-info {
+  color: white;
+  font-size: 13px;
+  padding: 0 8px;
 }
 
-.panel{
-  display:none;
-  margin-top:20px;
-  padding:20px;
-  border:1px solid rgba(0,234,255,.45);
-  border-radius:9px;
-  background:var(--panel);
-  box-shadow:0 0 35px rgba(0,140,255,.09);
-  animation:entrada .35s ease;
+#pdf-estado {
+  color: #c8d8e6;
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
 }
 
-.panel.activo{display:block}
-
-@keyframes entrada{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
+#pdf-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background: white;
 }
 
-.panel-cabecera{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  border-bottom:1px solid rgba(0,234,255,.3);
-  padding-bottom:14px;
-  margin-bottom:17px;
+.video-lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 18px;
 }
 
-.panel h2{
-  color:var(--gold);
-  font-size:20px;
-  letter-spacing:2px;
+.video-item {
+  padding: 12px;
+  background: #0b1b2a;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
 }
 
-.codigo{
-  color:var(--cyan);
-  font-size:9px;
-  letter-spacing:2px;
+.video-item h3 {
+  color: var(--verde);
+  font-size: 15px;
 }
 
-.descripcion{
-  color:#a9bfce;
-  font-size:11px;
-  line-height:1.7;
-  margin-bottom:19px;
+video {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  background: #000;
+  border-radius: 8px;
 }
 
-/* DOCUMENTOS ES74 EN COLUMNA */
-
-.documentos-es74{
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-  width:100%;
+.aviso {
+  color: #9fb6c9;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 25px;
 }
 
-.documento{
-  width:100%;
-  min-width:0;
-  border:1px solid rgba(0,234,255,.28);
-  border-radius:8px;
-  padding:15px;
-  text-align:center;
-  background:linear-gradient(145deg,#10283d,#071321);
+footer {
+  text-align: center;
+  color: #8299ab;
+  font-size: 11px;
+  padding: 20px;
 }
 
-.documento:hover{
-  border-color:var(--gold);
-  box-shadow:0 0 20px rgba(229,189,101,.12);
-}
-
-.documento h3{
-  color:var(--gold);
-  font-size:14px;
-  letter-spacing:1px;
-  margin-bottom:15px;
-}
-
-.nombre-archivo{
-  color:#a9bfce;
-  font-size:11px;
-  margin-top:12px;
-  overflow-wrap:anywhere;
-}
-
-/* GIF */
-
-.vista-gif{
-  width:100%;
-  min-height:180px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  background:#02070d;
-  border:1px solid var(--cyan);
-  border-radius:5px;
-  box-shadow:0 0 20px rgba(0,234,255,.15);
-}
-
-.vista-gif img{
-  display:block;
-  width:100%;
-  height:auto;
-  max-height:600px;
-  object-fit:contain;
-}
-
-.error-archivo{
-  display:none;
-  padding:25px;
-  color:#ffbd58;
-  font-size:12px;
-  line-height:1.7;
-}
-
-/* PNG */
-
-.vista{
-  display:flex;
-  min-height:190px;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  background:#02070d;
-  border:1px solid #29445a;
-  border-radius:5px;
-}
-
-.vista img{
-  display:block;
-  width:100%;
-  max-height:600px;
-  object-fit:contain;
-}
-
-/* PDF */
-
-.visor-pdf-contenedor{
-  width:100%;
-  height:750px;
-  overflow:hidden;
-  background:#fff;
-  border:1px solid var(--cyan);
-  border-radius:5px;
-}
-
-.visor-pdf{
-  display:block;
-  width:100%;
-  height:100%;
-  border:0;
-  background:#fff;
-}
-
-.abrir{
-  display:block;
-  width:100%;
-  margin-top:13px;
-  padding:13px 8px;
-  border:1px solid var(--cyan);
-  border-radius:4px;
-  color:var(--cyan);
-  background:rgba(0,234,255,.06);
-  text-decoration:none;
-  font-weight:bold;
-  font-size:11px;
-  letter-spacing:2px;
-  transition:.2s;
-}
-
-.abrir:hover{
-  background:var(--cyan);
-  color:#00101b;
-}
-
-/* ES274 */
-
-.documentos-es274{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
-}
-
-.video-investigacion{
-  width:100%;
-  display:block;
-  background:#000;
-  border:1px solid #29445a;
-  border-radius:5px;
-}
-
-.boton{
-  display:inline-block;
-  margin:20px 8px 0 0;
-  padding:12px 16px;
-  border:1px solid var(--gold);
-  border-radius:4px;
-  background:rgba(229,189,101,.06);
-  color:var(--gold);
-  text-decoration:none;
-  font-weight:bold;
-  font-size:10px;
-  letter-spacing:1px;
-  cursor:pointer;
-}
-
-.boton:hover{
-  background:var(--gold);
-  color:#050b12;
-}
-
-.navegacion{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:28px;
-}
-
-footer{
-  padding:25px 10px;
-  text-align:center;
-  border-top:1px solid rgba(0,234,255,.2);
-  color:#668397;
-  font-size:9px;
-  letter-spacing:2px;
-}
-
-footer strong{color:var(--gold)}
-
-@media(max-width:480px){
-  header{padding-top:24px}
-  .contenedor{padding:20px 12px 35px}
-  .carpetas{grid-template-columns:1fr 1fr;gap:10px}
-  .carpeta{min-height:155px;padding:13px 7px}
-  .icono{font-size:35px}
-  .panel{padding:13px}
-  .visor-pdf-contenedor{height:650px}
+@media(max-width: 620px) {
+  .modelos { grid-template-columns: 1fr; }
+  .panel-modelo { padding: 12px; }
 }
 </style>
 </head>
@@ -447,313 +238,323 @@ footer strong{color:var(--gold)}
 <body>
 
 <header>
-  <div class="logo">HYPERSONIC ALLIANCE</div>
-  <div class="sublogo">VANGUARD AVIATION SYSTEMS</div>
-  <div class="estado">
-    <span class="punto"></span>
-    CENTRO DE INVESTIGACIÓN · SISTEMA ACTIVO
+  <div class="kicker">HYPERSONIC ALLIANCE</div>
+  <h1>CENTRO DE INVESTIGACIÓN</h1>
+  <div class="subtitulo">
+    Vanguard Aviation Systems · Archivo de modelos experimentales
   </div>
 </header>
 
-<main class="contenedor">
+<main>
 
-  <div class="ruta">
-    HYPERSONIC ALLIANCE / <span>INVESTIGACIÓN</span>
-  </div>
+  <button class="volver" onclick="volverPortada()">
+    ← PORTADA
+  </button>
 
-  <section id="inicio">
+  <section id="catalogo">
+    <h2 style="color:#35e7ff;text-align:center">
+      ARCHIVO DE INVESTIGACIÓN
+    </h2>
 
-    <h1 class="titulo">CENTRO DE INVESTIGACIÓN</h1>
-
-    <p class="intro">
-      ARCHIVO CENTRAL DE PROYECTOS AEROESPACIALES.
-      Selecciona el modelo de avión para acceder a sus
-      expedientes, imágenes y documentación técnica.
+    <p style="text-align:center;color:#b8cbdc">
+      Selecciona uno de los modelos disponibles.
     </p>
 
-    <div class="linea"></div>
+    <div class="modelos">
 
-    <div class="carpetas">
+      <div class="modelo">
+        <h2>MODELO ES74</h2>
+        <p>
+          Plataforma conceptual de investigación hipersónica.
+        </p>
+        <button class="abrir" onclick="abrirModelo('es74')">
+          ABRIR MODELO ES74
+        </button>
+      </div>
 
-      <button class="carpeta" onclick="abrirModelo('ES74')">
-        <span class="numero">UNIDAD 01</span>
-        <span class="icono">📁</span>
-        <strong>MODELO ES74</strong>
-        <small>ARCHIVO DE INVESTIGACIÓN ES74</small>
-      </button>
-
-      <button class="carpeta" onclick="abrirModelo('ES274')">
-        <span class="numero">UNIDAD 02</span>
-        <span class="icono">📁</span>
-        <strong>MODELO ES274</strong>
-        <small>ARCHIVO DE INVESTIGACIÓN ES274</small>
-      </button>
+      <div class="modelo">
+        <h2>MODELO ES274</h2>
+        <p>
+          Archivo audiovisual del modelo experimental ES274.
+        </p>
+        <button class="abrir" onclick="abrirModelo('es274')">
+          ABRIR MODELO ES274
+        </button>
+      </div>
 
     </div>
   </section>
 
   <!-- MODELO ES74 -->
 
-  <section class="panel" id="ES74">
+  <section id="es74" class="panel-modelo">
 
-    <div class="panel-cabecera">
-      <h2>📂 MODELO ES74</h2>
-      <span class="codigo">EXPEDIENTE Nº 074</span>
-    </div>
+    <button class="volver" onclick="volverCatalogo()">
+      ← VOLVER A INVESTIGACIÓN
+    </button>
 
-    <p class="descripcion">
-      ARCHIVO TÉCNICO ES74 · DOCUMENTACIÓN DE INVESTIGACIÓN.
-      Animación, imagen gráfica y dossier técnico del modelo.
+    <h2>MODELO ES74</h2>
+
+    <p>
+      Imagen y documentación técnica conceptual del modelo ES74.
     </p>
 
-    <div class="documentos-es74">
+    <!-- 01 GIF ES74 -->
 
-      <!-- 1. GIF AUTOMÁTICO -->
+    <div class="documento">
+      <h3>01 · ANIMACIÓN DEL MODELO ES74</h3>
 
-      <article class="documento">
-
-        <h3>01 · DESPEGUE VERTICAL ES74</h3>
-
-        <div class="vista-gif">
-
-          <img
-            id="gif-es74"
-            src="./es741.gif"
-            alt="Animación del avión ES74 despegando verticalmente"
-            onerror="this.style.display='none';document.getElementById('error-gif').style.display='block';">
-
-          <div id="error-gif" class="error-archivo">
-            NO SE HA PODIDO CARGAR es741.gif.
-            Comprueba que el archivo está en la raíz del repositorio
-            y que su nombre es exactamente es741.gif.
-          </div>
-
-        </div>
-
-        <div class="nombre-archivo">
-          es741.gif · REPRODUCCIÓN AUTOMÁTICA Y REPETICIÓN CONTINUA
-        </div>
-
-      </article>
-
-      <!-- 2. PNG -->
-
-      <article class="documento">
-
-        <h3>02 · DOCUMENTO GRÁFICO ES74</h3>
-
-        <div class="vista">
-
-          <img
-            src="./inv.741.png"
-            alt="Documento gráfico del modelo ES74"
-            onerror="this.parentElement.innerHTML='<span style=color:#ffbd58;padding:20px>NO SE ENCUENTRA inv.741.png</span>'">
-
-        </div>
-
-        <div class="nombre-archivo">inv.741.png</div>
-
-        <a class="abrir"
-           href="./inv.741.png"
-           target="_blank"
-           rel="noopener">
-          ABRIR IMAGEN PNG
-        </a>
-
-      </article>
-
-      <!-- 3. PDF -->
-
-      <article class="documento">
-
-        <h3>03 · DOSSIER TÉCNICO ES74</h3>
-
-        <div class="visor-pdf-contenedor">
-
-          <iframe
-            class="visor-pdf"
-            id="visor-pdf"
-            title="Lectura integrada del dossier técnico ES74"
-            src="https://docs.google.com/gview?embedded=1&url=https%3A%2F%2Frafadun18-gif.github.io%2FPROYECTO-HYPERSONIC%2Finv.741.pdf"
-            loading="eager">
-          </iframe>
-
-        </div>
-
-        <div class="nombre-archivo">
-          inv.741.pdf · LECTOR INTEGRADO
-        </div>
-
-        <a class="abrir"
-           href="./inv.741.pdf"
-           target="_blank"
-           rel="noopener">
-          ABRIR DOCUMENTO PDF
-        </a>
-
-      </article>
-
+      <img
+        class="imagen-investigacion"
+        src="./es741.gif"
+        alt="Animación del modelo ES74"
+        onerror="this.alt='No se encuentra es741.gif';"
+      >
     </div>
 
-    <button class="boton" onclick="volverCarpetas()">
-      ← VOLVER AL ARCHIVO CENTRAL
-    </button>
+    <!-- 02 PNG ES74 -->
+
+    <div class="documento">
+      <h3>02 · IMAGEN DEL MODELO ES74</h3>
+
+      <img
+        class="imagen-investigacion"
+        src="./inv.es741.png"
+        alt="Imagen técnica del modelo ES74"
+        onerror="this.alt='NO SE ENCUENTRA inv.es741.png';"
+      >
+    </div>
+
+    <!-- 03 PDF ES74 -->
+
+    <div class="documento">
+      <h3>03 · DOSSIER TÉCNICO ES74</h3>
+
+      <p style="color:#c5d8e8">
+        Lector integrado. Utiliza los controles para cambiar de página
+        y ampliar o reducir el documento.
+      </p>
+
+      <div class="pdf-contenedor">
+
+        <div class="pdf-barra">
+          <button onclick="paginaAnterior()">◀ ANTERIOR</button>
+          <span id="pagina-info">Página 0 / 0</span>
+          <button onclick="paginaSiguiente()">SIGUIENTE ▶</button>
+          <button onclick="cambiarZoom(0.2)">+</button>
+          <button onclick="cambiarZoom(-0.2)">−</button>
+        </div>
+
+        <div id="pdf-estado">
+          Preparando lector PDF...
+        </div>
+
+        <canvas id="pdf-canvas"></canvas>
+
+      </div>
+    </div>
 
   </section>
 
   <!-- MODELO ES274 -->
 
-  <section class="panel" id="ES274">
+  <section id="es274" class="panel-modelo">
 
-    <div class="panel-cabecera">
-      <h2>📂 MODELO ES274</h2>
-      <span class="codigo">EXPEDIENTE Nº 274</span>
-    </div>
+    <button class="volver" onclick="volverCatalogo()">
+      ← VOLVER A INVESTIGACIÓN
+    </button>
 
-    <p class="descripcion">
-      ARCHIVO DE INVESTIGACIÓN DEL MODELO ES274.
-      Material audiovisual del proyecto disponible en
-      el repositorio principal.
+    <h2>MODELO ES274</h2>
+
+    <p>
+      Archivo audiovisual de investigación del modelo ES274.
     </p>
 
-    <div class="documentos-es274">
+    <div class="video-lista">
 
-      <article class="documento">
-
-        <h3>REGISTRO AUDIOVISUAL ES274 · 01</h3>
-
-        <video class="video-investigacion"
-          controls playsinline preload="metadata">
+      <div class="video-item">
+        <h3>ES274 · VÍDEO 1</h3>
+        <video controls playsinline preload="metadata">
           <source src="./ES2741.mp4" type="video/mp4">
           Tu navegador no puede reproducir este vídeo.
         </video>
+      </div>
 
-        <div class="nombre-archivo">ES2741.mp4</div>
-
-        <a class="abrir"
-          href="./ES2741.mp4"
-          target="_blank"
-          rel="noopener">
-          ABRIR VÍDEO
-        </a>
-
-      </article>
-
-      <article class="documento">
-
-        <h3>REGISTRO AUDIOVISUAL ES274 · 02</h3>
-
-        <video class="video-investigacion"
-          controls playsinline preload="metadata">
+      <div class="video-item">
+        <h3>ES274 · VÍDEO 2</h3>
+        <video controls playsinline preload="metadata">
           <source src="./ES2742.mp4" type="video/mp4">
           Tu navegador no puede reproducir este vídeo.
         </video>
+      </div>
 
-        <div class="nombre-archivo">ES2742.mp4</div>
-
-        <a class="abrir"
-          href="./ES2742.mp4"
-          target="_blank"
-          rel="noopener">
-          ABRIR VÍDEO
-        </a>
-
-      </article>
-
-      <article class="documento">
-
-        <h3>REGISTRO AUDIOVISUAL ES274 · 03</h3>
-
-        <video class="video-investigacion"
-          controls playsinline preload="metadata">
+      <div class="video-item">
+        <h3>ES274 · VÍDEO 3</h3>
+        <video controls playsinline preload="metadata">
           <source src="./ES2743.mp4" type="video/mp4">
           Tu navegador no puede reproducir este vídeo.
         </video>
-
-        <div class="nombre-archivo">ES2743.mp4</div>
-
-        <a class="abrir"
-          href="./ES2743.mp4"
-          target="_blank"
-          rel="noopener">
-          ABRIR VÍDEO
-        </a>
-
-      </article>
+      </div>
 
     </div>
 
-    <button class="boton" onclick="volverCarpetas()">
-      ← VOLVER AL ARCHIVO CENTRAL
-    </button>
-
   </section>
 
-  <nav class="navegacion">
-
-    <a class="boton" href="./index.html">
-      ← PORTADA PRINCIPAL
-    </a>
-
-    <a class="boton" href="./catalogo.html">
-      ACCEDER AL CATÁLOGO →
-    </a>
-
-  </nav>
+  <p class="aviso">
+    HYPERSONIC ALLIANCE · CENTRO DE INVESTIGACIÓN
+  </p>
 
 </main>
 
 <footer>
-  HYPERSONIC ALLIANCE<br><br>
-  <strong>RESEARCH & DEVELOPMENT DIVISION</strong><br><br>
-  ES74 · ES274 · CENTRO DE INVESTIGACIÓN
+  VANGUARD AVIATION SYSTEMS · PROYECTO HYPERSONIC
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
 <script>
-function abrirModelo(modelo){
+/* RUTA EXACTA DEL PDF */
+const PDF_URL = "./inv.es741.pdf";
 
-  document.getElementById("inicio").style.display="none";
+let documentoPDF = null;
+let paginaActual = 1;
+let escalaPDF = 1.15;
+let cargandoPDF = false;
 
-  document.querySelectorAll(".panel").forEach(panel=>{
+if (typeof pdfjsLib !== "undefined") {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+}
+
+function abrirModelo(id) {
+  document.getElementById("catalogo").style.display = "none";
+
+  document.querySelectorAll(".panel-modelo").forEach(panel => {
     panel.classList.remove("activo");
   });
 
-  const seleccionado=document.getElementById(modelo);
+  document.getElementById(id).classList.add("activo");
 
-  if(seleccionado){
-    seleccionado.classList.add("activo");
+  if (id === "es74" && !documentoPDF) {
+    cargarPDF();
   }
+}
 
-  if(modelo==="ES74"){
-    const gif=document.getElementById("gif-es74");
+function volverCatalogo() {
+  document.querySelectorAll(".panel-modelo").forEach(panel => {
+    panel.classList.remove("activo");
+  });
 
-    if(gif){
-      gif.src="./es741.gif?actualizacion=1";
-    }
-  }
+  document.getElementById("catalogo").style.display = "block";
+  detenerVideos();
+}
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
+function volverPortada() {
+  window.location.href = "./index.html";
+}
+
+function detenerVideos() {
+  document.querySelectorAll("video").forEach(video => {
+    video.pause();
   });
 }
 
-function volverCarpetas(){
+async function cargarPDF() {
+  const estado = document.getElementById("pdf-estado");
 
-  document.querySelectorAll(".panel").forEach(panel=>{
-    panel.classList.remove("activo");
-  });
+  if (typeof pdfjsLib === "undefined") {
+    estado.textContent =
+      "No se ha podido cargar el lector PDF. Comprueba la conexión a Internet.";
+    return;
+  }
 
-  document.getElementById("inicio").style.display="block";
+  estado.textContent = "Cargando documento PDF...";
 
-  document.querySelectorAll("video").forEach(video=>{
-    video.pause();
-  });
+  try {
+    const tarea = pdfjsLib.getDocument({
+      url: PDF_URL,
+      withCredentials: false
+    });
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    documentoPDF = await tarea.promise;
+    paginaActual = 1;
+
+    estado.textContent = "Documento cargado correctamente.";
+
+    await mostrarPagina();
+
+  } catch (error) {
+    console.error("Error al cargar el PDF:", error);
+
+    documentoPDF = null;
+
+    estado.textContent =
+      "NO SE HA PODIDO LEER EL PDF. Comprueba que inv.es741.pdf esté publicado en la raíz del repositorio.";
+  }
+}
+
+async function mostrarPagina() {
+  if (!documentoPDF || cargandoPDF) return;
+
+  cargandoPDF = true;
+
+  const estado = document.getElementById("pdf-estado");
+  const canvas = document.getElementById("pdf-canvas");
+  const contexto = canvas.getContext("2d");
+
+  try {
+    estado.textContent = "Preparando página...";
+
+    const pagina = await documentoPDF.getPage(paginaActual);
+    const viewport = pagina.getViewport({ scale: escalaPDF });
+    const salida = window.devicePixelRatio || 1;
+
+    canvas.width = Math.floor(viewport.width * salida);
+    canvas.height = Math.floor(viewport.height * salida);
+    canvas.style.width = Math.floor(viewport.width) + "px";
+    canvas.style.height = Math.floor(viewport.height) + "px";
+
+    await pagina.render({
+      canvasContext: contexto,
+      viewport: viewport,
+      transform: salida !== 1
+        ? [salida, 0, 0, salida, 0, 0]
+        : null
+    }).promise;
+
+    document.getElementById("pagina-info").textContent =
+      "Página " + paginaActual + " / " + documentoPDF.numPages;
+
+    estado.textContent = "";
+
+  } catch (error) {
+    console.error("Error al mostrar página:", error);
+    estado.textContent = "No se ha podido mostrar esta página.";
+
+  } finally {
+    cargandoPDF = false;
+  }
+}
+
+function paginaAnterior() {
+  if (!documentoPDF || paginaActual <= 1) return;
+
+  paginaActual--;
+  mostrarPagina();
+}
+
+function paginaSiguiente() {
+  if (!documentoPDF || paginaActual >= documentoPDF.numPages) return;
+
+  paginaActual++;
+  mostrarPagina();
+}
+
+function cambiarZoom(cambio) {
+  if (!documentoPDF) return;
+
+  escalaPDF = Math.max(0.5, Math.min(2.5, escalaPDF + cambio));
+  mostrarPagina();
 }
 </script>
 
