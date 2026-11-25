@@ -89,10 +89,7 @@ button:active { background: #123b50; }
   text-align: center;
 }
 
-.modelo h2 {
-  color: var(--cian);
-  margin-top: 5px;
-}
+.modelo h2 { color: var(--cian); }
 
 .modelo p {
   color: #b8cbdc;
@@ -120,6 +117,16 @@ button:active { background: #123b50; }
 
 .panel-modelo h2 { color: var(--cian); }
 
+.documento {
+  margin-top: 25px;
+  padding: 15px;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: #050d17;
+}
+
+.documento h3 { color: var(--verde); }
+
 .imagen-investigacion {
   display: block;
   width: 100%;
@@ -131,16 +138,6 @@ button:active { background: #123b50; }
   border: 1px solid var(--borde);
   border-radius: 10px;
 }
-
-.documento {
-  margin-top: 25px;
-  padding: 15px;
-  border: 1px solid var(--borde);
-  border-radius: 10px;
-  background: #050d17;
-}
-
-.documento h3 { color: var(--verde); }
 
 .pdf-contenedor {
   width: 100%;
@@ -264,9 +261,7 @@ footer {
 
       <div class="modelo">
         <h2>MODELO ES74</h2>
-        <p>
-          Plataforma conceptual de investigación hipersónica.
-        </p>
+        <p>Plataforma conceptual de investigación hipersónica.</p>
         <button class="abrir" onclick="abrirModelo('es74')">
           ABRIR MODELO ES74
         </button>
@@ -274,9 +269,7 @@ footer {
 
       <div class="modelo">
         <h2>MODELO ES274</h2>
-        <p>
-          Archivo audiovisual del modelo experimental ES274.
-        </p>
+        <p>Archivo audiovisual del modelo experimental ES274.</p>
         <button class="abrir" onclick="abrirModelo('es274')">
           ABRIR MODELO ES274
         </button>
@@ -295,11 +288,7 @@ footer {
 
     <h2>MODELO ES74</h2>
 
-    <p>
-      Imagen y documentación técnica conceptual del modelo ES74.
-    </p>
-
-    <!-- 01 GIF ES74 -->
+    <p>Imagen y documentación técnica conceptual del modelo ES74.</p>
 
     <div class="documento">
       <h3>01 · ANIMACIÓN DEL MODELO ES74</h3>
@@ -308,11 +297,9 @@ footer {
         class="imagen-investigacion"
         src="./es741.gif"
         alt="Animación del modelo ES74"
-        onerror="this.alt='No se encuentra es741.gif';"
+        onerror="this.insertAdjacentHTML('afterend','<p style=&quot;color:#ff7777;text-align:center&quot;>NO SE ENCUENTRA es741.gif</p>'); this.style.display='none';"
       >
     </div>
-
-    <!-- 02 PNG ES74 -->
 
     <div class="documento">
       <h3>02 · IMAGEN DEL MODELO ES74</h3>
@@ -321,18 +308,16 @@ footer {
         class="imagen-investigacion"
         src="./inv.es741.png"
         alt="Imagen técnica del modelo ES74"
-        onerror="this.alt='NO SE ENCUENTRA inv.es741.png';"
+        onerror="this.insertAdjacentHTML('afterend','<p style=&quot;color:#ff7777;text-align:center&quot;>NO SE ENCUENTRA inv.es741.png</p>'); this.style.display='none';"
       >
     </div>
-
-    <!-- 03 PDF ES74 -->
 
     <div class="documento">
       <h3>03 · DOSSIER TÉCNICO ES74</h3>
 
       <p style="color:#c5d8e8">
-        Lector integrado. Utiliza los controles para cambiar de página
-        y ampliar o reducir el documento.
+        Lector integrado del dossier técnico. Utiliza los controles
+        para cambiar de página y ampliar o reducir el documento.
       </p>
 
       <div class="pdf-contenedor">
@@ -345,10 +330,7 @@ footer {
           <button onclick="cambiarZoom(-0.2)">−</button>
         </div>
 
-        <div id="pdf-estado">
-          Preparando lector PDF...
-        </div>
-
+        <div id="pdf-estado">Preparando lector PDF...</div>
         <canvas id="pdf-canvas"></canvas>
 
       </div>
@@ -366,9 +348,7 @@ footer {
 
     <h2>MODELO ES274</h2>
 
-    <p>
-      Archivo audiovisual de investigación del modelo ES274.
-    </p>
+    <p>Archivo audiovisual de investigación del modelo ES274.</p>
 
     <div class="video-lista">
 
@@ -413,7 +393,7 @@ footer {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
-/* RUTA EXACTA DEL PDF */
+/* ARCHIVO PDF DEL ES74 */
 const PDF_URL = "./inv.es741.pdf";
 
 let documentoPDF = null;
@@ -446,17 +426,14 @@ function volverCatalogo() {
   });
 
   document.getElementById("catalogo").style.display = "block";
-  detenerVideos();
+
+  document.querySelectorAll("video").forEach(video => {
+    video.pause();
+  });
 }
 
 function volverPortada() {
   window.location.href = "./index.html";
-}
-
-function detenerVideos() {
-  document.querySelectorAll("video").forEach(video => {
-    video.pause();
-  });
 }
 
 async function cargarPDF() {
@@ -464,7 +441,7 @@ async function cargarPDF() {
 
   if (typeof pdfjsLib === "undefined") {
     estado.textContent =
-      "No se ha podido cargar el lector PDF. Comprueba la conexión a Internet.";
+      "No se ha podido cargar el lector PDF. Comprueba tu conexión a Internet.";
     return;
   }
 
@@ -480,16 +457,14 @@ async function cargarPDF() {
     paginaActual = 1;
 
     estado.textContent = "Documento cargado correctamente.";
-
     await mostrarPagina();
 
   } catch (error) {
     console.error("Error al cargar el PDF:", error);
-
     documentoPDF = null;
 
     estado.textContent =
-      "NO SE HA PODIDO LEER EL PDF. Comprueba que inv.es741.pdf esté publicado en la raíz del repositorio.";
+      "NO SE HA PODIDO LEER inv.es741.pdf. Comprueba que el archivo esté publicado en la raíz del repositorio.";
   }
 }
 
@@ -538,21 +513,18 @@ async function mostrarPagina() {
 
 function paginaAnterior() {
   if (!documentoPDF || paginaActual <= 1) return;
-
   paginaActual--;
   mostrarPagina();
 }
 
 function paginaSiguiente() {
   if (!documentoPDF || paginaActual >= documentoPDF.numPages) return;
-
   paginaActual++;
   mostrarPagina();
 }
 
 function cambiarZoom(cambio) {
   if (!documentoPDF) return;
-
   escalaPDF = Math.max(0.5, Math.min(2.5, escalaPDF + cambio));
   mostrarPagina();
 }
